@@ -1,0 +1,136 @@
+"""
+Q. Given a linked list, sort its nodes based on the data value in them. Return the head of the sorted linked list.
+
+Example 1:
+Input:Linked List: 3 4 2 1 5
+
+Output:Sorted List: 1 2 3 4 5
+
+Explanation:  The input linked list when sorted from [3, 4, 2, 1, 5] results in a linked list with values: [1, 2, 3, 4, 5].
+
+
+                
+Example 2:
+Input:List: 40 20 60 10 50 30
+
+Output: Sorted List: 10 20 30 40 50 60
+
+Explanation:  The input linked list when sorted from [40, 20, 60, 10, 50, 30] results in a linked list with values: [10, 20, 30, 40, 50, 60].
+"""
+
+class Node:
+    def __init__(self, data, prev=None, next=None):
+        self.prev = prev
+        self.data = data
+        self.next = next
+
+
+def printLL(head):
+    mover = head
+    while(mover):
+        print(mover.data, end=" ")
+        mover = mover.next
+    print()
+
+
+def ArrayToDLL(arr):
+    head = Node(arr[0])
+    earlier = head
+
+    for i in range(1, len(arr)):
+        curr = Node(arr[i], earlier)
+        earlier.next = curr
+        earlier = curr
+    return head
+
+
+def countLL(head):
+    temp = head
+    counter = 0
+
+    while(temp):
+        counter += 1
+        temp = temp.next
+    return counter
+
+
+
+def Sort(head):
+    temp = head
+
+    arr = []
+    while(temp):
+        arr.append(temp.data)
+        temp = temp.next
+    arr.sort()
+    return ArrayToDLL(arr)
+
+
+def findMidOfLL(head):
+    temp = head
+    hare = temp.next
+    tortoise = temp
+
+    while(hare and hare.next):
+        hare = hare.next.next
+        tortoise = tortoise.next
+    return tortoise
+
+def merge(head1, head2):
+    if head1 is None and head2 is None:
+        return None
+    if head1 is None:
+        return head2
+    if head2 is None:
+        return head1
+    if head1.data <= head2.data:
+        sorted_head = head1
+        head1 = head1.next
+    else:
+        sorted_head = head2
+        head2 = head2.next
+
+    curr_head = sorted_head
+    while(head1 and head2):
+        if head1.data <= head2.data:
+            curr_head.next = head1
+            curr_head = curr_head.next
+            head1 = head1.next
+
+        else:
+            curr_head.next = head2
+            curr_head = curr_head.next
+            head2 = head2.next
+
+    while head1:
+        curr_head.next = head1
+        curr_head = head1
+        head1 = head1.next
+
+    while head2:
+        curr_head.next = head2
+        curr_head = head2
+        head2 = head2.next
+
+    return sorted_head
+
+
+def SortOptimal(head):
+    """
+    Think of merge sort Algorithm
+    """
+    if head is None or head.next is None:
+        return head
+    temp = head
+    mid = findMidOfLL(temp)
+    right = mid.next
+    mid.next = None
+
+    leftPart = SortOptimal(temp)
+    rightPart = SortOptimal(right)
+    return merge(leftPart, rightPart)
+
+arr = [4,2,1,6,7,5]
+head = ArrayToDLL(arr)
+head = SortOptimal(head)
+printLL(head)

@@ -1,0 +1,87 @@
+1. What is Linked List?
+
+2. Where is it used?
+    i. stack
+    ii. queue
+    iii. Browser move forward and backward (DLL)
+
+3. Implementation in python.
+
+    class Node:
+        def __init__(self, data1, next1 = None):
+            self.data = data1
+            self.next = next1
+
+    y = Node(2)
+    print(y.data)
+    print(y.next)
+
+4. Memory Space Used
+    i. 32-bit
+        int -> 4 bytes
+        pointer -> 4 bytes
+        total = 8 bytes
+
+    ii. 64-bit
+        int -> 4 bytes
+        pointer -> 8 bytes
+        total = 12 bytes
+
+5. Convert Array to a LinkedList
+    class Node:
+        def __init__(self, data1, next1 = None):
+            self.data = data1
+            self.next = next1
+
+        def ArrToLinkedList(arr):
+            head = Node(arr[0])
+            mover = head
+
+            for i in range(1, len(arr)):
+                temp = Node(arr[i])
+                mover.next = temp
+                mover = temp
+            return head
+
+        arr = [1,2,3,4,5]
+        head = ArrToLinkedList(arr)
+        print(head.data)
+
+6. Traversal in LinkedList
+
+    def printLL(head):
+        """
+        Time Complexity: O(N)
+        """
+        temp = head
+        while(temp):
+            print(temp.data, end=" ")
+            temp = temp.next
+
+
+7. Length of a LinkedList
+
+    def lenghtOfLL(head):
+        """
+        Time Complexity: O(N)
+        """
+        temp = head
+        counter = 0
+        while(temp):
+            counter += 1
+            temp = temp.next
+        return counter
+
+8. Search an element in LinkedList
+
+    def checkIfPresent(head, value):
+        """
+        Time Complexity: O(N)
+        """
+        temp = head
+
+        while(temp):
+            if temp.data == value:
+                return True
+            temp = temp.next
+        return False

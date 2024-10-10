@@ -1,0 +1,97 @@
+1. Find second large element. (Done)
+2. Find 2 element whose sum is equal to target element. (Done)
+3. li=["flower", "flowweerr", "flowwwwwww"] find largest common substring.
+4. const nums = [1,2,3,4,7,9,8,6,3], target = 3; half elements are in increasing order and half are in decreasing order.
+5. Geeks for geeks k the ki equilibrium point nikalna h mtlb us point k left or right side k saare number ka sum kre to same ho.
+6. Print Fibonacci series. (Done)
+7. a**b without using power and * operator.
+8. l = [1,2,3,4,5], rotate k = 2 times, if k < 0 (-ve), then rotate anti clockwise (need optimized solution). (Done)
+9. outer elements mtlb isme 3x3 ki matrix h to array k center ka(1,1 location) element chod k baki sare print krne h clockwise spiral way me (spiral matrix)
+
+
+
+
+
+
+
+
+
+
+Python coding Questions ---------
+1. Palindrom number (string and number) (Done)
+2. Fibonacci series (iterative and recursive) (Done)
+3. Compress string (Eg: aabbccddeeee O/P a2b2c2d2e4) (Done)
+4. If number divisible by 3 (Fizz), by 5 (Buzz) and 15(FizzBuzz) (Done)
+5. Character occurence (Done)
+	-> Least repeating character in string
+	-> Count of any particular element
+	-> Count all occurence of all element
+	-> Maximun repeating element
+  
+6. Find Prime Numbers in interval
+7. Modify string format.
+	"""
+	Input = I_Am_A_Coder
+	Output = i_aM_a_cODER
+	
+	changes:
+		
+		first_upper_letter = first_lower_letter
+		remaining_lower_letter = remaining_upper_letter
+		
+		
+		
+8. Armstrong number in a interval
+9. Factorial
+	"""
+	145! = 1!+4!+5! = 1+24+120 = 145
+	Print number from 1 to 1 lakh where summation of factorial of each digit equals to the actual number.
+
+10. Create fibonacci series using Generator (Done)
+11. Sort list without using sort keyword - Bubble sort (Done)
+12. Sort Dictionary by value (by keys)
+13. Find the Output
+	"""
+	Input = "the sky is blue"
+	Output = "blue is sky the"
+	
+	
+	Input = /*apples are & found% @only @red & green
+	Output = (Remove Punchuation and space)
+
+	"""
+14. Find minimum and maximum value in a list. (Done)
+15. How to raise Exception.
+16. Difference b/w list and array.
+17. How you will add numbers using decorators.
+18. What do you mean by abstraction, How you define Abstract class or function by using Abstracton.
+19. What is GIL, Explain.
+20. What if we don't use WITH statement.
+21. What is the difference b/w static and class method.
+
+
+
+
+
+
+
+1. Find duplicate in an array.
+2. Maximum consecutive one's (or zeros) in a binary.
+3. Find all pairs of elements in an array whose sum is equal to a given number.
+4. Find continuous sub array whose sum is equal to a given number.
+5. Find intersection of two arrays.
+6. Find a missing number in an array.
+7. Find rotation with maximum humming distance. (high level)
+8. count distinct element in every k size window. (high level)
+
+9. Print a duplicate characters from a string.
+10. Check if 2 strings are k-anagrams or not.
+11. Check for balanced brackets.
+12. Count number of substrings. (satendrsa, count sa in this string)
+13. Check if a string is a rotated palindrom or not.
+14. find all possible palindromic substrings of a string.
+15. find the longest substring of a string containing distinct characters.
+16. find the first k non-repeating characters in a string in a single traversal.
+17. check if a repeated subsequence is present in a string or not.
+
+

@@ -1,0 +1,38 @@
+1. What is DLL
+
+    -> Uses => going forward and backward in tab
+
+
+
+2. Representation
+
+    class Node:
+    def __init__(self, data, prev=None, next=None):
+        self.prev = prev
+        self.data = data
+        self.next = next
+
+3. Array -> DLL
+
+    def ArrayToDLL(arr):
+        head = Node(arr[0])
+        earlier = head
+
+        for i in range(1, len(arr)):
+            curr = Node(arr[i], earlier)
+            earlier.next = curr
+            earlier = curr
+        return head
+
+4. Deletion of a Node
+    i. Head
+    ii. Tail
+    iii. Kth
+    iv. Node
+
+
+5. Insertion of a Node
+    i. before head
+    ii. before tail
+    iii. before Kth Node
+    iv. before a given Node
