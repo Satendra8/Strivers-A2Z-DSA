@@ -24,6 +24,11 @@ Output: 564908303
 def countGoodNumbers(n):
     """
     1. Brute Force Approach
+    2. if index is even we can put [0,2,4,6,8]
+    3. if index is odd we can put [2,3,5,7]
+    4. loop till number and multiply
+    5. Time Complexity: O(N)
+    6. Space Complexity: O(1)
     """
     ans = 1
     for i in range(n):
@@ -63,6 +68,13 @@ def powOptimal(x, n):
 def countGoodNumbersOptimal(n):
     """
     1. Optimal Approach
+    2. use the logic if n is even = (2 even) + (2 odd)
+    3. if n is odd = (2 even) + (2 odd) + 1 even
+    4. 5**n/2 * 4**n/2
+    5. if n is odd then multiply with 5
+    6. use optimal approach to find power
+    7. Time Complexity: O(logN)
+    7. Space Complexity: O(1)
     """
     MOD = 10**9 + 7
 

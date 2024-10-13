@@ -61,6 +61,14 @@ def countLL(head):
 
 
 def deleteAllOccuranceOfX(head, x):
+    """
+    1. Optimal Approach
+    2. handle head: mark prev of next element to null and mark next element as head
+    3. handle tail: mark next of prev element to null
+    4. handle mid element: make the prev node points to next and next to prev
+    5. Time Complexity: O(N)
+    6. Space Complexity: O(1)
+    """
     temp = head
     if head is None:
         return None

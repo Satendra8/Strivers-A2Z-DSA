@@ -49,6 +49,15 @@ def insert_at_last(head, val):
 
 
 def sortList(node):
+    """
+    1. Brute Force Approach
+    2. Create 3 LL for 0,1 and 2
+    3. insert 0 in node0, 1 in node1 and 2 in node2
+    4. make node0 as head, and mark last node of node0 point to head of node1
+    5. mark last node of node1 point to head of node2
+    6. Time Complexity: O(N^2)
+    7. Space Complexity: O(N)
+    """
     temp = node
     node0 = None
     node1 = None
@@ -82,6 +91,15 @@ def insert_at_begining(head, val):
 
 
 def sortListBetter(head):
+    """
+    1. Better Approach
+    2. Create 3 LL for 0,1 and 2
+    3. insert 0 in node0, 1 in node1 and 2 in node2
+    4. make node0 as head, and mark last node of node0 point to head of node1
+    5. mark last node of node1 point to head of node2
+    6. Time Complexity: O(N^2)
+    7. Space Complexity: O(N)
+    """
     temp = head
     node0 = None
     node1 = None
@@ -128,6 +146,13 @@ def sortListBetter(head):
 
 
 def sortListStriver(head):
+    """
+    1. Brute Force Approach
+    2. count number of 0, 1 and 2
+    3. form a LL
+    4. Time Complexity: O(2N)
+    5. Space Complexity: O(N)
+    """
     count0 = 0
     count1 = 0
     count2 = 0
@@ -159,6 +184,15 @@ def sortListStriver(head):
     return head
 
 def sortListStriverOptimal(head):
+    """
+    1. Optimal Approach
+    2. Create 3 dummy node for 0,1 and 2
+    3. insert 0 in node0, 1 in node1 and 2 in node2
+    4. make node0 as head, and mark last node of node0 point to head of node1
+    5. mark last node of node1 point to head of node2
+    6. Time Complexity: O(N)
+    7. Space Complexity: O(N)
+    """
     if head is None or head.next is None:
         return head
     temp = head

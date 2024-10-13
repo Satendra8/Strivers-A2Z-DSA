@@ -36,6 +36,14 @@ def printLL(head):
     print()
 
 def lengthOfLoop(head):
+    """
+    1. Brute Force Approach
+    2. maintain a set
+    3. if element is found in set initialize counter
+    4. if element is again found stop counter
+    5. Time Complexity: O(N)
+    6. Space Complexity: O(N)
+    """
     temp = head
     s = set()
 
@@ -57,6 +65,16 @@ def lengthOfLoop(head):
 
 
 def lenghtOfLoopOptimized(head):
+    """
+    1. Optimal Approach
+    2. use hare and tortoise method
+    3. move hare 2 step and tortoise 1 step
+    4. if hare == tortoise loop found initialize counter
+    5. count the element till hare != tortoise
+    6. once hare and tortoise are at same position return count
+    7. Time Complexity: O(N)
+    8. Space Complexity: O(1)
+    """
     hare = head
     tortoise = head
 

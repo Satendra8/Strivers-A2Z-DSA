@@ -54,6 +54,13 @@ def ArrayToDLL(arr):
 
 
 def findIntersection(head1, head2):
+    """
+    1. Brute Force Approach
+    2. use set and insert element of head1
+    3. now check if any node matches in head2
+    4. Time Complexity: O(N+M)
+    5. Space Complexity: O(N)
+    """
     temp1 = head1
     temp2 = head2
 
@@ -70,6 +77,15 @@ def findIntersection(head1, head2):
 
 
 def findIntersectionBetter(head1, head2):
+    """
+    1. Better Approach
+    2. count lenght of both linked list
+    3. move the larger linked list head to count1 - count2 steps
+    4. move now both the node are at same distance from last node
+    5. both both node 1 step and if match return that node
+    6. Time Complexity: O(N+M)
+    7. Space Complexity: O(1)
+    """
     count1 = countLL(head1)
     count2 = countLL(head2)
     temp1 = head1
@@ -97,6 +113,16 @@ def findIntersectionBetter(head1, head2):
 
 
 def findIntersectionOptimal(head1, head2):
+    """
+    1. Optimal Approach
+    2. run the loop on both head simultaneously
+    3. if head1 ends assign this pointer to head2
+    4. if head2 ends assign this pointer to head1
+    5. at this moment head with large length have skipped diffence of count of node
+    6. now move pointers 1 step each and return matching
+    7. Time Complexity: O(N+M)
+    8. Space Complexity: O(1)
+    """
     if head1 is None or head2 is None:
         return None
     temp1 = head1

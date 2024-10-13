@@ -81,6 +81,18 @@ def reverse(head):
 
 
 def AddTwoNumbersLeetcode(l1, l2):
+    """
+    1. Better Approach
+    2. Do NULL check
+    3. find the LL with larger number of node and make it head
+    4. iterate over both head and keep adding
+    5. if there is a carry move it to the next sum
+    6. if head1 ends do the same for the rest of head2
+    7. if head2 ends do the same for the rest of head1
+    8. if there is a still carry create a new and connect it
+    9. Time Complexity: O(N+M)
+    10. Space Co plexity: O(1)
+    """
     if l1 is None and l2 is None:
         return None
     
@@ -233,6 +245,16 @@ def AddTwoNumbers(l1, l2):
 
 
 def AddTwoNumbersStriver(l1, l2):
+    """
+    1. Optimal Approach
+    2. Do the check for NULL
+    3. create a Dummy head
+    4. run a loop and keep adding head1 data and head2 data and carry
+    5. create a new node with the added number
+    6. If at the end there is still carry create a new node and link
+    7. Time Complexity: O(N)
+    8. Space Complexity: O(N)
+    """
     if l1 is None and l2 is None:
         return None
     

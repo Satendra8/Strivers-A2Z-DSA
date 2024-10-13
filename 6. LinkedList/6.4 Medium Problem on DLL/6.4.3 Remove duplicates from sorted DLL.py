@@ -64,6 +64,14 @@ def countLL(head):
 
 
 def removeDuplicates(head):
+    """
+    1. Optimal Approach
+    2. handle duplicate at first node (move head 1 furthur to check match with prev element)
+    3. if prev and current match then make prev to point next and next to prev
+    4. handle duplicate at last node (point next to prev if this is node last node)
+    5. Time Complexity: O(N)
+    6. Space Complexity: O(1)
+    """
     if head is None or head.next is None:
         return head
     # handle duplicate at first node

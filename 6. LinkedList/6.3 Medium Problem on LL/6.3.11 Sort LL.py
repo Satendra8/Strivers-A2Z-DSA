@@ -56,6 +56,14 @@ def countLL(head):
 
 
 def Sort(head):
+    """
+    1. Brute Force Approach
+    2. Create an Array From LinkedList
+    3. sort the array
+    4. Replace the soted array numbers to LinkedList
+    5. Time Complexity: O(Nlogn)
+    6. Space Complexity: O(N)
+    """
     temp = head
 
     arr = []
@@ -118,6 +126,12 @@ def merge(head1, head2):
 def SortOptimal(head):
     """
     Think of merge sort Algorithm
+    1. Find middle of LL
+    2. Sort the left part
+    3. Sort the right part
+    4. merge left and right sorted parts
+    5. Time Complexity: O(Nlogn)
+    6. Space Complexity: O(N)
     """
     if head is None or head.next is None:
         return head

@@ -61,7 +61,13 @@ def countLL(head):
 
 def findPairsWithGivenSum(head, target):
     """
-    Brute Force
+    1. Brute Force Approach
+    2. Use set
+    3. push the element in set
+    4. keep checking if remaining number exist in set
+    5. if found then append it to ans
+    6. Time Complexity: O(N)
+    7. Space Complexity: O(N) // to store ans
     """
     ans = []
     temp = head
@@ -77,6 +83,15 @@ def findPairsWithGivenSum(head, target):
 
 
 def findPairsWithGivenSumOptimal(head, target):
+    """
+    1. Optimal Approach
+    2. use two pointer approach
+    3. if target match append it to ans
+    4. if target is lesser move left pointer
+    5. if target is greater move right pointer
+    6. Time Complexity: O(N)
+    6. Space Complexity: O(N) // to store ans
+    """
     if head is None:
         return []
     temp = head

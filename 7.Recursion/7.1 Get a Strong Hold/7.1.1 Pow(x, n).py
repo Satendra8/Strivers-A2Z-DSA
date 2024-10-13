@@ -36,7 +36,11 @@ def pow(x, n):
 
 def powOptimal(x, n):
     """
-    Time Complexity: O(logN), as we are dividing by 2
+    1. if n is even (2)^10 = even = (2*2)^5 (make x*x and reduce n by half)
+    2. if n is odd  (4)^5 = odd = 4 * (4)^4 (multiply x to ans and reduce n by 1)
+    3. if n was negative return 1/n else return n
+    4. Time Complexity: O(logN), as we are dividing by 2
+    5. Space Complexity: O(1)
     """
     origional_n = n
     if (n < 0):

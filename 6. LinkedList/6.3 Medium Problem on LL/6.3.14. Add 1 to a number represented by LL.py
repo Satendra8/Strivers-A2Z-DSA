@@ -90,6 +90,8 @@ def AddOneBetter(head):
     3. reverse the LL again to get the number
     4. edge case [9,9,9] + 1 = [1,0,0,0]
     5. if carry is still one create a new node make it head
+    6.Time Complexity: O(3N)
+    7. Space Complexity: O(1)
     """
     r1 = reverse(head)
     temp = r1
@@ -136,6 +138,8 @@ def AddOneOptimal(head):
     """
     4. edge case [9,9,9] + 1 = [1,0,0,0]
     5. if carry is still one create new node and return it as head
+    6. Time Complexity: O(N)
+    7. Space Complexity: O(N) for storing recursive call stack
     """
     carry = helper(head)
     if carry == 1:
@@ -161,6 +165,8 @@ r1 = [9, 9, 1]
 3. reverse the LL again to get the number
 4. edge case [9,9,9] + 1 = [1,0,0,0]
 5. if carry is still one create a new node make it head
+6. Time Complexity: O(N)
+7. Space Complexity: O(N) for storing recursive call stack
 
 
 """
