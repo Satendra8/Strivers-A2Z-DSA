@@ -1,32 +1,74 @@
-def checkPalindrom(s, first, last):
-    if first > last:
-        return True
-    if s[first] != s[last]:
-        return False
-    
-    return checkPalindrom(s, first+1, last-1)
+def countSetBits(n):
+    counter = 0
+
+    while(n>1):
+        rem = n % 2
+        n = n // 2
+        if rem == 1:
+            counter += 1
+    if n == 1:
+        counter += 1
+    return counter 
+
+def countSetBitsUsingBitWiseOperator(n):
+    counter = 0
+
+    while(n>1):
+        #check odd, if odd is 1 remainder is 1
+        counter += n&1
+        n = n >> 1
+    if n == 1:
+        counter += 1
+    return counter
 
 
-def partition(s, index, ans, l, n):
-    """
-    1. base case: if index exceeds, appnend in ans
-    2. loop over index to n partition furthur if is substr is palindrom
-    3. substr is starting from index to i+1
-    4. Time Complexity: O(n^n), n is lenght of string
-    5. Space Complexity: O(n^n)
-    """
-    if index >= n:
-        l.append(ans)
-        return
+def countSetBitsUsingRemoveLastSetBit(n):
+    counter = 0
 
-    for i in range(index, n):
-        substr = s[index:i+1]
-        if checkPalindrom(substr, 0, len(substr)-1):
-            partition(s, i+1, ans+[substr], l, n)
-    return
+    while (n>0):
+        counter += 1
+        n = n & n-1
 
-s = "aab"
-n = len(s)
-l = []
-partition(s, 0, [], l, n)
-print(l)
+    return counter
+
+
+n = 15 #01111
+print(countSetBitsUsingRemoveLastSetBit(n))
+
+
+"""
+n = 16
+
+Iterate and check if rem is 1
+check if n is 1 at last
+
+
+Bit Wise Solution (use >> to divide)
+
+1000 >> 1 = 100 (4)
+100 >> 1 = 10 (2)
+10 >> 1 = 01 (1)
+
+
+Remove Last Set Bit (keep removing last set bit untill it becomes 0)
+
+N = 84
+
+    1010100
+N-1 1010011
+    --------
+&   1010000
+
+    1010000
+    1000000
+    -------
+&   1000000
+
+
+    1000000
+    0111111
+    --------
+    0000000
+
+
+"""
