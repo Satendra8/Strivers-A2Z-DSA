@@ -75,7 +75,11 @@ def divideOptimal(dividend, divisor):
         3 * 7
         3 * (2^2 + 2^1 + 2^0)
         (3*2^2) + (3*2^1) + (3*2^0)
-        formula = divisor*
+    1. find the max element <= 3*2^x
+    2. now subtract it from dividend
+    3. ans will be ans + 2^x
+    4. Time Complexity: logN * logN
+    5. Space Complexity: O(1)
     """
     INT_MAX = 2**31 - 1
     INT_MIN = -2**31
@@ -128,6 +132,7 @@ can i remove
 3*2^1 = 6 (3<<1) = (011<<1 = 110)
 3*2^2 = 12 (3 * 1<<2) = (3<<2) = (011<<2 = 1100)
 3*2^3 = 24 (no so subtract 12)
+ans = 2^2 = 4
 
 now dividend = 10
 
@@ -135,12 +140,14 @@ can i remove
 3*2^0 = 3
 3*2^1 = 6
 3*2^2 = 12 (no so subtract 6)
+ans = 4 + 2^1 = 6
 
 now dividend = 4
 
 can i remove
 3*2^0 = 3
 3*2^1 = 6 (no so subtract 3)
+ans = 6 + 2^0 = 7
 
 now dividend = 1
 
