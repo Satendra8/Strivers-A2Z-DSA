@@ -38,6 +38,11 @@ def countSetBitsUsingBitWiseOperator(n):
 
 
 def countSetBitsUsingRemoveLastSetBit(n):
+    """
+    1. Remove Last Set Bit (keep removing last set bit untill it becomes 0)
+    2. Time Complexity: O(logN)
+    3. Space Complexity: O(1)
+    """
     counter = 0
 
     while (n>0):

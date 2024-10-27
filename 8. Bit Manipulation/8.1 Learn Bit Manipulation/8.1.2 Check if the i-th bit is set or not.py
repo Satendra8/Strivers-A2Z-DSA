@@ -35,7 +35,7 @@ def checkIfithBitisSet(n, i):
     2. convert number into binary
     3. then iterate and check nth bit
     4. Time Complexity: O(logN)s
-    4. Space Complexity: O(logN) to store binary representation
+    5. Space Complexity: O(logN) to store binary representation
     """
     binary = convert2Binary(n)
 

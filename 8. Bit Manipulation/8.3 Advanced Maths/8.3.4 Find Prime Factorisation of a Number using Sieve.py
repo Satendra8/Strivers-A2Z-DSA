@@ -1,3 +1,16 @@
+"""
+Q. You are given a positive number N. Using the concept of Sieve, compute its prime factorisation.
+
+Example:
+
+Input: 
+N = 12246
+Output: 
+2 3 13 157
+Explanation: 
+2*3*13*157 = 12246 = N.
+"""
+
 import math
 
 
