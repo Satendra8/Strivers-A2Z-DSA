@@ -1,3 +1,8 @@
+"""
+Q. Implement stack using linked list
+
+"""
+
 class Node:
     def __init__(self, data, next):
         self.data = data

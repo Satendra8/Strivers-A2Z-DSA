@@ -1,0 +1,19 @@
+Stack is a data structure that follows the Last In First Out (LIFO) rule.
+
+Stack Functions:
+    i. push
+    ii. pop
+    iii. top
+    iv. size
+
+
+
+Queue is a data structure that follows the First In First Out (FIFO) rule.
+
+Queue Functions:
+    i. push
+    ii. pop
+    iii. rear
+    iv. front
+    v. size
+
