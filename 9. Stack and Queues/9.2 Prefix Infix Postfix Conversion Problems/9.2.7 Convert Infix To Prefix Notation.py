@@ -1,3 +1,17 @@
+"""
+Q. Given an infix expression, Your task is to convert the given infix expression to a prefix expression.
+
+Example 1:
+Input: x+y*z/w+u
+Output: ++x/*yzwu
+Explanation: Infix to prefix
+
+Example 2:
+Input: a+b
+Output: +ab
+Explanation: Infix to prefix
+"""
+
 def getPrecedence(c):
     if c == '^':
         return 3

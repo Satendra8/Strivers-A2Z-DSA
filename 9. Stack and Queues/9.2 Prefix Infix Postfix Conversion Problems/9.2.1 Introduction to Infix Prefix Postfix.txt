@@ -1,0 +1,9 @@
+1. Infix: (p+q) * (m-n)
+
+2. Prefix: *+pq-mn (used in tree and LISP language)
+
+3. Postfix: pq+mn-* (used in stack based calculator)
+
+1. Infix to Postfix
+
+    s = a + b * (c ^ d - e)
