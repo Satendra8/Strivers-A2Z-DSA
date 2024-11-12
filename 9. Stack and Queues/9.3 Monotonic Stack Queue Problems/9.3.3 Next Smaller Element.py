@@ -23,6 +23,12 @@ Explaination 2:
 """
 
 def prevSmallerBrute(arr):
+    """
+    1. Brute Force Approach
+    2. Iterate from last over each element and check for next greater
+    3. Time Complexity: O(N^2)
+    4. Space Complexity: O(2N)
+    """
     n = len(arr)
     ans = []
 
@@ -40,6 +46,14 @@ def prevSmallerBrute(arr):
 
 
 def prevSmaller(arr):
+    """
+    Basic idea: maintain elements in stack in decreasing order (maintaining some order in stack is called monotonic stack problem)
+    1. Iterate from beginning
+    2. keep removing from stack if larger element found
+    3. ans will be -1 in case of empty stack
+    Time Complexity: O(2N)
+    Space Complexity: O(N)
+    """
     stack = []
     ans = []
 

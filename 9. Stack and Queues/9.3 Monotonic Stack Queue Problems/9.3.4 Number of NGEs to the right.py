@@ -18,6 +18,11 @@ Explanation: The count of numbers to the right of index 0 which are greater than
 """
 
 def count_NGEs(N, arr, queries, indices):
+    """
+    1. Iterate over all elements and keep counting greater
+    Time Complexity: O(N^2)
+    Space Complexity: O(N)
+    """
     ans = []
     for index in indices:
         count = 0

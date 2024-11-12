@@ -16,6 +16,7 @@ class MyStackBrute:
 
     def push(self, x):
         """
+        PUSH
         1. Brute Force Approach
         2. use a tempreary queue to transfer elements
         3. Time Complexity: O(N)
@@ -46,6 +47,7 @@ class MyStack:
 
     def push(self, x):
         """
+        PUSH
         1. Optimal Approach
         2. insert one element and move n-1 elements to right side
         3. Time Complexity: O(N)

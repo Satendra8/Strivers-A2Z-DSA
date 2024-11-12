@@ -28,6 +28,8 @@ def infixToPrefix(s):
     2. infix to postfix
     3. reverse the ans
     4. edge case ^^ cannot store 2 powers in stack together
+    Time Complexity: O(2N)
+    Space Complexity: O(2N)
     """
     s = s[::-1]
     ans = ""

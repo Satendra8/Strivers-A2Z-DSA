@@ -35,7 +35,9 @@ class StockSpannerBrute():
     Brute Force Approach
     1. store all elements in array
     2. keep checking and count till previous is smaller or equal to
-    4. push new price and return smaller count
+    3. push new price and return smaller count
+    Time Complexity: O(N^2)
+    Space Complexity: O(N)
     """
 
     def __init__(self):

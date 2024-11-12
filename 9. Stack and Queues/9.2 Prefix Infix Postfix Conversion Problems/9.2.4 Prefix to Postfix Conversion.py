@@ -13,6 +13,13 @@ The above output is its valid postfix form.
 """
 
 def prefixToPostfix(pre_exp):
+    """
+    1. iterate from last
+    2. push operand in stack
+    3. for operator, pop 2 elements AB+
+    4. Time Complexity: O(N)
+    5. Space Complexity: O(N)
+    """
     stack = []
 
     for i in range(len(pre_exp)-1, -1, -1):

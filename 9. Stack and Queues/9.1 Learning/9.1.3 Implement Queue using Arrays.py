@@ -36,10 +36,13 @@ class Queue:
 
     def push(self, n):
         """
+        PUSH
         1. edge case: check is queue is full
         2. edge case: handle circular insert by % (self.end + 1) % self.capacity
         3. edge case: if queue is empty incrment both start and end pointer
         4. edge case: increase current size
+        Time Complexity: O(1)
+        Space Complexity: O(1)
         """
         if self.current_size < self.capacity:
             self.end = (self.end + 1) % self.capacity
@@ -53,12 +56,13 @@ class Queue:
 
     def pop(self):
         """
+        POP
         1. edge case: check if queue is empty
         2. edge case: if there is only 1 element then mark start and end at -1
         3. edge case: handle circular pop (self.start + 1) % self.capacity
         4. edge case: decrease current size
-        
-        
+        Time Complexity: O(1)
+        Space Complexity: O(1)
         """
         if self.current_size == 0:
             print("Stack is empty!")

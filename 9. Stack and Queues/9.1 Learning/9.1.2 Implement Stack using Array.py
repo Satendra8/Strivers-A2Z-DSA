@@ -3,6 +3,16 @@ Q. Implement a stack using an array.
 """
 
 class Stack:
+    """
+    Simple implementation using list
+    Functions:
+        i. push
+        ii. Top
+        iii. pop
+        iv. Size
+    Time Complexity: O(1)
+    Space Complexity: O(1)
+    """
 
     def __init__(self):
         self.top = -1

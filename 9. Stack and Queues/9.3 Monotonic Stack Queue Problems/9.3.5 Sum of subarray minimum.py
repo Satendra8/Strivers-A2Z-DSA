@@ -24,7 +24,16 @@ def sumSubarrayMinsBrute(arr):
             summ += min(arr[i:j+1])
     return summ
 
+
+
 def sumSubarrayMinsBetter(arr):
+    """
+    1. Iterate over each element
+    2. find all elements to the right
+    3. find minimum and add
+    Time Complexity: O(N^2)
+    Space Complexity: O(1)
+    """
     n = len(arr)
     summ = 0
 
@@ -34,6 +43,7 @@ def sumSubarrayMinsBetter(arr):
             minn = min(minn, arr[j])
             summ += minn
     return summ
+
 
 
 def nextSmallerElement(arr):

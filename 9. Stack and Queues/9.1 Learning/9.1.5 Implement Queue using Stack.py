@@ -47,7 +47,7 @@ class Queue1:
     
     def Pop(self):
         """
-        push operation is O(N)
+        pop operation is O(N)
         1. move s1 -> s2
         2. pop from s2
         3. move back s2 -> s1
@@ -63,7 +63,7 @@ class Queue1:
 
     def peek(self):
         """
-        push operation is O(N)
+        peak operation is O(N)
         1. move s1 -> s2
         2. store top element
         3. move back s2 -> s1

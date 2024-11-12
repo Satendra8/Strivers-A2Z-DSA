@@ -21,8 +21,9 @@ Output: [2,3,4,-1,4]
 def nextGreaterElementCircularBrute(arr):
     """
     1. Brute Force Approach
-    2. Time Complexity: O(N^2)
-    3. Space Complexity: O(2N)
+    2. Iterate over each element and check for next greater
+    3. Time Complexity: O(N^2)
+    4. Space Complexity: O(2N)
     """
     arr = arr+arr
     n = len(arr)
@@ -43,6 +44,10 @@ def nextGreaterElementCircularBrute(arr):
 def nextGreaterElementCircularBetter(arr):
     """
     basic idea: hypothetically double the array
+    1. Better Approach
+    2. Iterate over each element and check for next greater
+    3. Time Complexity: O(N^2)
+    4. Space Complexity: O(N)
     """
     n = len(arr)
     ans = []

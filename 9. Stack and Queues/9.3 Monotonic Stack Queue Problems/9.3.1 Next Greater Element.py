@@ -20,8 +20,9 @@ Output: 7,-1,7,-1,-1,-1
 def nextGreaterElementBrute(arr):
     """
     1. Brute Force Approach
-    2. Time Complexity: O(N^2)
-    3. Space Complexity: O(2N)
+    2. Iterate over each element and check for next greater
+    3. Time Complexity: O(N^2)
+    4. Space Complexity: O(2N)
     """
     arr = arr
     n = len(arr)
@@ -42,7 +43,11 @@ def nextGreaterElementBrute(arr):
 def nextGreaterElementOptimal(arr):
     """
     Basic idea: maintain elements in stack in increasing order (maintaining some order in stack is called monotonic stack problem)
-    
+    1. Iterate from last
+    2. keep removing from stack if smaller element found
+    3. ans will be -1 in case of empty stack
+    Time Complexity: O(2N)
+    Space Complexity: O(N)
     """
     n = len(arr)
     NGE = []

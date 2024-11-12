@@ -10,6 +10,16 @@ class Node:
 
     
 class Stack:
+    """
+    1. initialize top and size
+    2. Functions
+        i. push
+        ii. Top
+        iii. pop
+        iv. Size
+    Time Complexity: O(1)
+    Space Complexity: O(1)
+    """
     def __init__(self):
         self.top = None
         self.size = 0

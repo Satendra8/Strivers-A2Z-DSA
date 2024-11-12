@@ -28,6 +28,7 @@ class MinStackBrute:
 
     def push(self, x):
         """
+        PUSH
         1. use 2 stack 1 to store numbers and 1 for minimums
         2. if min stack is empty or lesser number found insert in min stack
         3. Time Complexity: O(1)
@@ -39,6 +40,7 @@ class MinStackBrute:
 
     def pop(self):
         """
+        POP
         1. if normal stack and min stack are same top are same pop both
         2. Time Complexity: O(1)
         3. Space Complexity: O(2N)
@@ -73,6 +75,7 @@ class MinStackBetter:
 
     def push(self, x):
         """
+        PUSH
         1. use pair to store num and minimum [(-2,-2), (0, -2), (-3, -3)]
         2. Time Complexity: O(1)
         3. Space Complexity: O(2N)
@@ -85,6 +88,7 @@ class MinStackBetter:
 
     def pop(self):
         """
+        POP
         1. pop element
         2. Time Complexity: O(1)
         3. Space Complexity: O(2N)
@@ -118,6 +122,7 @@ class MinStackOptimal:
 
     def push(self, x):
         """
+        PUSH
         1. store combination of min and val in stack use formula 2 * x - self.min
         2. if val < min then update min with value and store combination in stack
         2. Time Complexity: O(1)
@@ -136,6 +141,7 @@ class MinStackOptimal:
 
     def pop(self):
         """
+        POP
         1. pop the element
         2. if x < self.min then regenerate the min
         3. by using reverse formula 2 * self.min - x
