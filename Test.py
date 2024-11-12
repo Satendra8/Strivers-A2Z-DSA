@@ -1,129 +1,58 @@
-def subArrayRanges(nums):
+class StockSpannerBrute():
     """
     Brute Force Approach
+    1. store all elements in array
+    2. keep checking and count till previous is smaller or equal to
+    4. push new price and return smaller count
     """
-    summ = 0
-    n = len(nums)
 
-    for i in range(n):
-        minn = 10**9
-        maxx = -10**9
-        for j in range(i, n):
-            minn = min(minn, nums[j])
-            maxx = max(maxx, nums[j])
-            summ += (maxx - minn)
-    return summ
+    def __init__(self):
+        self.stack = []
+        
 
+    def next(self, price):
 
+        count = 1
+        n = len(self.stack)
 
-def prevSmallerElement(nums, n):
-    stack = []
-    ans = [-1]*n
-
-    for i in range(n):
-        while stack and nums[stack[-1]] > nums[i]:
-            stack.pop()
-        if stack:
-            ans[i] = stack[-1]
-        stack.append(i)
-    return ans
+        for i in range(n-1, -1, -1):
+            if self.stack[i] <= price:
+                count += 1
+            else:
+                break
+        self.stack.append(price)
+        print(count)
 
 
-def nextSmallerElement(nums, n):
-    stack = []
-    ans = [n]*n
-
-    for i in range(n-1, -1, -1):
-        while stack and nums[stack[-1]] >= nums[i]:
-            stack.pop()
-        if stack:
-            ans[i] = stack[-1]
-        stack.append(i)
-    return ans
-
-
-def minimumSubarraySum(nums, n):
-    summ = 0
-
-    prevArr = prevSmallerElement(nums, n)
-    nextArr = nextSmallerElement(nums, n)
-
-    for i in range(n):
-        prev = i - prevArr[i]
-        next = nextArr[i] - i
-        summ += (prev * next * nums[i])
-    return summ
-
-
-def prevLargerElement(nums, n):
-    stack = []
-    ans = [-1]*n
-
-    for i in range(n):
-        while stack and nums[stack[-1]] < nums[i]:
-            stack.pop()
-        if stack:
-            ans[i] = stack[-1]
-        stack.append(i)
-    return ans
-
-def nextLargerElement(nums, n):
-    stack = []
-    ans = [n]*n
-
-    for i in range(n-1, -1, -1):
-        while stack and nums[stack[-1]] <= nums[i]:
-            stack.pop()
-        if stack:
-            ans[i] = stack[-1]
-        stack.append(i)
-    return ans
-
-def maximumSubarraySum(nums, n):
-    summ = 0
-
-    prevArr = prevLargerElement(nums, n)
-    nextArr = nextLargerElement(nums, n)
-    print(prevArr, nextArr)
-
-    for i in range(n):
-        prev = i - prevArr[i]
-        next = nextArr[i] - i
-        summ += (prev * next * nums[i])
-    return summ
-
-
-def subArrayRangesOptimal(nums):
+class StockSpanner():
     """
-    1. Find sum of subarray minimum
-        i. find prev smaller element
-        ii. find next smaller element
-        iii. prev * next * num (will get individual contribution)
-    2. Find sum of subarray maximum
-        i. find prev larger element
-        ii. find next larger element
-        iii. prev * next * num (will get individual contribution)
-    3. do maximum sum - minimum sum
-    Time Complexity: O(3N+3N)
-    Space Complexity: O(4N+4N)
+    Optimal Approach
+    1. store prev greater element along with its index
+    2. calculate the ans by subtracting the current and prev index
+    Time Complexity: O(N), for overall operations
+    Space Complexity: O(N)
     """
-    n = len(nums)
-    return maximumSubarraySum(nums, n) - minimumSubarraySum(nums, n)
 
+    def __init__(self):
+        self.stack = []
+        self.size = 0
+        
 
-nums = [4,-2,-3,4,1]
-print(subArrayRangesOptimal(nums))
+    def next(self, price):
+        while self.stack and self.stack[-1][0] <= price:
+            self.stack.pop()
+        self.size += 1
+        ans = self.size - 0
+        if self.stack:
+            ans = self.size - self.stack[-1][1]
+        self.stack.append((price, self.size))
+        print(ans)
 
-
-"""
-1. Find sum of subarray minimum
-    i. find prev smaller element
-    ii. find next smaller element
-    iii. prev * next * num (will get individual contribution)
-2. Find sum of subarray maximum
-    i. find prev larger element
-    ii. find next larger element
-    iii. prev * next * num (will get individual contribution)
-3. do maximum sum - minimum sum
-
-"""
+stockSpanner = StockSpanner()
+stockSpanner.next(100);# return 1
+stockSpanner.next(80); # return 1
+stockSpanner.next(60); # return 1
+stockSpanner.next(70); # return 2
+stockSpanner.next(60); # return 1
+stockSpanner.next(75); # return 4, because the last 4 prices (including today's price of 75) were less than or equal to today's price.
+stockSpanner.next(85); # return 6
