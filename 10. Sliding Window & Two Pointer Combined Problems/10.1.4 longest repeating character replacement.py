@@ -43,6 +43,15 @@ def characterReplacement(s, k):
 
 
 def characterReplacementBetter(s, k):
+    """
+    Better Approach
+    1. use pointer with sliding window
+    2. keep storing the frequency
+    3. if substr exceeds k (validate k by length of substr - max frequency) move the left pointer until length becomes <= k
+    4. keep updating the max
+    Time Complexity: O(2N)
+    Space Complexity: O(26)
+    """
     n = len(s)
     maxx = 0
     left = 0

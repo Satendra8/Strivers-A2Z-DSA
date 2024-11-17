@@ -131,6 +131,6 @@ def subarray_sum_with_negative(arr, k):
         d[prev_sum] = index
     return counter
         
-arr = [1,2,3,1,1,1,1,4,2,3]
-k = 3
+arr = [1,0,1,0,1]
+k = 2
 print(subarray_sum_with_negative(arr,k))
