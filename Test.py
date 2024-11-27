@@ -1,46 +1,27 @@
-def insert(intervals, newInterval):
+def eraseOverlapIntervals(intervals):
     """
     Better Approach
-                    |                   |
-    intervals = [[1,2],|[3,5],[6,7],[8,10],|[12,16]]
-                    |                   |
-                Left   |      Mid          | Right
-
-    newInterval = [4,8]
-
-    Left Part
-    interval[1] < newInterval[0] # if last element is less then first of new interval
-    ans = [[1,2]]
-
-    Middle Part
-    interval[0] <= newInterval[1]  #if first element is less then of equal to last of new interval
-    pick the smallest and largest among all
-    ans = [[1,2], [3,10]]
-
-    Last Part
-    Rest elements are Right Part
-    ans = [[1,2], [3,10], [12,16]]
-
-    Time Complexity: O(N)
+    1. sort the array with last element (to know which one finish faster)
+    2. check if prev second <= next first element (check not overlap)
+    3. if overlap count it
+    Time Complexity: O(NlogN) + O(N)
     Space Complexity: O(N)
     """
+    if not intervals:
+        return 0
     n = len(intervals)
+    intervals.sort(key=lambda x: x[1])
+    end = float('-inf')
     i = 0
-    ans = []
+    overlap = 0
 
-    while i < n and intervals[i][1] < newInterval[0]:
-        ans.append(intervals[i])
-        i += 1
-    while i < n and intervals[i][0] <= newInterval[1]:
-        newInterval[0] = min(newInterval[0], intervals[i][0])
-        newInterval[1] = max(newInterval[1], intervals[i][1])
-        i += 1
-    ans.append(newInterval)
     while i < n:
-        ans.append(intervals[i])
-        i += 1            
-    return ans
+        if end <= intervals[i][0]:
+            end = intervals[i][1]
+        else:
+            overlap += 1
+        i += 1
+    return overlap
 
-intervals = [[1,3],[6,9]]
-newInterval = [2,5]
-print(insert(intervals, newInterval))
+intervals = [[1,2],[2,3],[3,4],[-100,-2],[5,7]]
+print(eraseOverlapIntervals(intervals))
