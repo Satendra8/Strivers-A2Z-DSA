@@ -69,7 +69,7 @@ def checkValidStringBrute(s, ind, count, n):
     3. if * then call recursion on with ( do +1, ) do -1, '' do nothing
     4. base case, if count becomes -ve or length exceeds
     5. Time Complexity: 3^N
-    6. Space Complexity: N (depth of recursion) 
+    6. Space Complexity: N (depth of recursion)
     """
     if count < 0:
         return False

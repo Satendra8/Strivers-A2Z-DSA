@@ -48,6 +48,9 @@ def sjf(bt):
     total       20
     -------------------
     AVG = 20/5 = 4
+
+    Time Complexity: O(N)
+    Space Complexity: O(1)
     """
     n = len(bt)
     bt.sort()

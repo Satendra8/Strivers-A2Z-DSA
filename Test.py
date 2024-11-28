@@ -1,27 +1,31 @@
-def eraseOverlapIntervals(intervals):
+def countNodes(i):
     """
-    Better Approach
-    1. sort the array with last element (to know which one finish faster)
-    2. check if prev second <= next first element (check not overlap)
-    3. if overlap count it
-    Time Complexity: O(NlogN) + O(N)
-    Space Complexity: O(N)
+    return 2 ^ N-1
+    Time Complexity: O(1)
+    Space Complexity: O(1)
     """
-    if not intervals:
-        return 0
-    n = len(intervals)
-    intervals.sort(key=lambda x: x[1])
-    end = float('-inf')
-    i = 0
-    overlap = 0
+    return 2 ** (i-1)
 
-    while i < n:
-        if end <= intervals[i][0]:
-            end = intervals[i][1]
-        else:
-            overlap += 1
-        i += 1
-    return overlap
+i = 1
+print(countNodes(i))
 
-intervals = [[1,2],[2,3],[3,4],[-100,-2],[5,7]]
-print(eraseOverlapIntervals(intervals))
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def createTree(root, l):
+    root.left = Node(l[1])
+    root.right = Node(l[2])
+    root.left.left = Node(l[3])
+    root.left.right = Node(l[4])
+    root.right.left = Node(l[5])
+    root.right.right = Node(l[6])
+
+    return root
+
+l = [1, 2, 3, 4, 5, 6, 7]
+root = Node(1)
+createTree(root, l)

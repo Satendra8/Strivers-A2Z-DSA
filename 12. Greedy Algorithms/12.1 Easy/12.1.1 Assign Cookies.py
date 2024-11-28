@@ -23,6 +23,13 @@ You need to output 2.
 """
 
 def findContentChildren(g, s):
+    """
+    Brute Force Approach
+    1. sort the childrens which has low greed will come first
+    2. assing cookie for all using 2 nested loops
+    Time Complexity: O(N^2)
+    Space Complexity: O(1)
+    """
     s.sort()
     print(s)
     n = len(s)
