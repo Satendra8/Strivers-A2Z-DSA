@@ -1,35 +1,11 @@
 """
-1. PreOrder Traversal (NLR):
+Traversal Techniques (BFS)
 
-         1
-       /   \
-     2       3
-   /  \     /  \
-  4    5   6    7
+    1. PreOrder Traversal (NLR)
+    2. PostOrder Traversal (LRN)
+    3. InOrder Traversal (LNR)
 
-ans = [1 2 4 5 3 6 7]
-
-Time Complexity: O(N)
-Space Complexity: O(N)
-
-
-2. PostOrder Traversal (LRN):
-
-         1
-       /   \
-     2       3
-   /  \     /  \
-  4    5   6    7
-
-ans = [4 5 2 6 7 3 1]
-
-Time Complexity: O(N)
-Space Complexity: O(N)
 """
-
-
-
-
 
 class Node:
     def __init__(self, data):
@@ -67,11 +43,11 @@ def postorder(node):
     """
     2. PostOrder Traversal (LRN):
 
-            1
-          /   \
-        2       3
-      /  \     /  \
-     4    5   6    7
+                  1
+                /   \
+              2       3
+            /  \     /  \
+           4    5   6    7
 
     ans = [4 5 2 6 7 3 1]
 
@@ -89,7 +65,7 @@ def postorder(node):
 
 def inorder(node):
     """
-    2. InOrder Traversal (LNR):
+    3. InOrder Traversal (LNR):
 
             1
           /   \

@@ -12,7 +12,7 @@ Output:
        /   \
      2       3
    /  \     /  \
-   4  5    6   7
+   4  5    6    7
 Explanation: 
 The 7 node binary tree is represented above.
 """
