@@ -1,63 +1,36 @@
-def insertIntoBST(root, val):
-    """
-    Iterative Approach
-    1. create a node
-    2. do simple binary search
-    3. keep moving left if greater value found to find right place 
-    4. keep moving right if smaller value found to find right place
-    5. now right position found
-    6. if value less than current node make left child else make right child
-    Time Complexity: O(logN)
-    Space Complexity: O(1)
-    """
+def rightMost(root):
     temp = root
-    node = Node(val)
+    while temp.right:
+        temp = temp.right
+    return temp.val
+
+def leftMost(root):
+    temp = root
+    while temp.left:
+        temp = temp.left
+    return temp.val
+
+
+def isValidBST(root):
     if not root:
-        return node
+        return True
     
-    target = None
-    while(temp):
-        if temp.val > val:
-            target = temp
-            temp = temp.left
-        else:
-            target = temp
-            temp = temp.right
-    if target.val > val:
-        target.left = node
-    else:
-        target.right = node
-    return root
+    if root.left and (root.left.val >= root.val or rightMost(root.left) >= root.val):
+        return False
+    if root.right and (root.right.val <= root.val or leftMost(root.right) <= root.val):
+        return False
+    return isValidBST(root.left) and isValidBST(root.right)
+    
+INT_MIN = -10**9
+INT_MAX = 10**9
 
-
-def insertBSTStriver(root, val):
-    temp = root
-    node = Node(val)
+def isValidBSTOptimal(root, range=(INT_MIN, INT_MAX)):
     if not root:
-        return node
-
-    while(True):
-        if temp.val > val:
-            if temp.left:
-                temp = temp.left
-            else:
-                temp.left = node
-                break
-        else:
-            if temp.right:
-                temp = temp.right
-            else:
-                temp.right = node
-                break
-    return root
-
-def inorder(root):
-    if not root:
-        return
-    inorder(root.left)
-    print(root.val)
-    inorder(root.right)
-
+        return True
+    
+    if root.val > range[1] or root.val < range[0]:
+        return False
+    return isValidBSTOptimal(root.left, (range[0], root.val)) and isValidBSTOptimal(root.right, (root.val, range[1]))
 
 class Node:
     def __init__(self, val):
@@ -66,13 +39,11 @@ class Node:
         self.right = None
 
 
-root = Node(10)
-root.left = Node(5)
-root.right = Node(11)
-root.left.left = Node(4)
-root.left.right = Node(7)
-root.left.right.right = Node(8)
+root = Node(5)
+root.left = Node(3)
+root.right = Node(6)
+root.left.left = Node(2)
+root.left.left.left = Node(1)
+root.left.right = Node(4)
 
-x = 6
-r = insertBSTStriver(root, x)
-inorder(r)
+print(isValidBSTOptimal(root))
