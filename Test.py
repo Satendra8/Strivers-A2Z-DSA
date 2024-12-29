@@ -1,93 +1,35 @@
-def bfsStriver(row, col, visited, m, n, grid):
+def dfs(node, adj, visited, n):
+    neighbours = adj[node]
+
+    for neighbour in neighbours:
+        if visited[neighbour] == -1:
+            visited[neighbour] = not visited[node]
+            if not dfs(neighbour, adj, visited, n):
+                return False
+        else:
+            if visited[neighbour] != (not visited[node]):
+                return False
+    return True
+
+def isBipartite(graph):
     """
-    for 8 direction row_range [-1,1] and col_range [-1,1]
+    Use DFS
+    1. If 2 adjacent node has same color then not bipertite
+    2. use a visited array and save color as 0 and 1
+    3. run DFS if a node is already visited and this time its color is different then return false
+    4. handle disconnected components
+    Time Complexity: O(V+2E)
+    Space Complexity: O(V)
     """
-    visited[row][col] = 1
-    queue = [(row, col)]
-
-    while queue:
-        i, j = queue.pop(0)
-
-        for drow in range(-1, 2):
-            for dcol in range(-1, 2):
-                new_row = i + drow
-                new_col = j + dcol
-                if new_row >= 0 and new_row < n and new_col >= 0 and new_col < m and grid[new_row][new_col] == 1 and not visited[new_row][new_col]:
-                    visited[new_row][new_col] = 1
-                    queue.append((new_row, new_col))
-
-def bfs(row, col, visited, m, n, grid):
-    visited[row][col] = 1
-    queue = [(row, col)]
-
-    while queue:
-        i, j = queue.pop(0)
-
-        #left
-        if j-1 >= 0 and grid[i][j-1] == 1 and not visited[i][j-1]:
-            visited[i][j-1] = 1
-            queue.append((i, j-1))
-
-        #right
-        if j+1 < m and grid[i][j+1] == 1 and not visited[i][j+1]:
-            visited[i][j+1] = 1
-            queue.append((i, j+1))
-
-        #top
-        if i-1 >= 0 and grid[i-1][j] == 1 and not visited[i-1][j]:
-            visited[i-1][j] = 1
-            queue.append((i-1, j))
-
-        #bottom
-        if i+1 < n and grid[i+1][j] == 1 and not visited[i+1][j]:
-            visited[i+1][j] = 1
-            queue.append((i+1, j))
-
-        #top left
-        if i-1 >= 0 and  j-1 >= 0 and grid[i-1][j-1] == 1 and not visited[i-1][j-1]:
-            visited[i-1][j-1] = 1
-            queue.append((i-1, j-1))
-
-        #top right
-        if i-1 >= 0 and  j+1 < m and grid[i-1][j+1] == 1 and not visited[i-1][j+1]:
-            visited[i-1][j+1] = 1
-            queue.append((i-1, j+1))
-
-        #bottom left
-        if i+1 < n and  j-1 >= 0 and grid[i+1][j-1] == 1 and not visited[i+1][j-1]:
-            visited[i+1][j-1] = 1
-            queue.append((i+1, j-1))
-
-        #bottom right
-        if i+1 < n and  j+1 < m  and grid[i+1][j+1] == 1 and not visited[i+1][j+1]:
-            visited[i+1][j+1] = 1
-            queue.append((i+1, j+1))
-        print(queue)
-
-def numIslands(grid):
-    """
-    Using DFS
-    1. Same as connected components
-    2. iterate over all cells (M*N)
-    3. run BFS/DFS if they are not visited
-    4. check in all 8 directions, if there is 1 and not visited cell
-    Time Complexity: O(M*N) + O(M*N)
-    Space Complexity: O(M*N) + O(M*N)
-    """
-    n = len(grid)
-    m = len(grid[0])
-
-    visited = [[0]*m for i in range(n)]
-    counter = 0
+    n = len(graph)
+    visited = [-1]*n
 
     for i in range(n):
-        for j in range(m):
-            if grid[i][j] == 1 and not visited[i][j]:
-                print(i,j)
-                bfsStriver(i, j, visited, m, n, grid)
-                counter += 1
-    return counter
+        if visited[i] == -1:
+            visited[i] = 0
+            if not dfs(i, graph, visited, n):
+                return False
+    return True
 
-
-grid = [[0,1,1,1,0,0,0],[0,0,1,1,0,1,0]]
-print(numIslands(grid))
+graph = [[],[2,4,6],[1,4,8,9],[7,8],[1,2,8,9],[6,9],[1,5,7,8,9],[3,6,9],[2,3,4,6,9],[2,4,5,6,7,8]]
+print(isBipartite(graph))
