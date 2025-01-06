@@ -1,42 +1,30 @@
-def dfs(node, adj, visited, visitedPath, V):
+def dfs(node, adj, visited, ans):
     visited[node] = 1
-    visitedPath[node] = 1
-
     neighbours = adj[node]
 
     for neighbour in neighbours:
         if not visited[neighbour]:
-            if dfs(neighbour, adj, visited, visitedPath, V):
-                return True
-        else:
-            if visitedPath[neighbour]:
-                return True
-    visitedPath[node] = 0
-    return False
+            dfs(neighbour, adj, visited, ans)
+    ans.append(node)
 
 
-def isCyclic(V, adj):
+def topologicalSort(adj):
     """
-    Use DFS
-    1. for cycle on the same path node has to be visited again
-    2. maintain a visited path array
-    3. use disconnected component to traverse all node
-    4. while returning back mark visited path 0
-    5. at any moment if cycle found return true
+    DFS
+    1. whenever dfs for a node is done while returning put that in stack
+    2. run loop for all components
+    3. run normal dfs, while returning from a node put that node in stack
     Time Complexity: O(V+E)
-    Space Complexity: O(2N)
+    Space Complexity: 2V
     """
-    visited = [0]*V
-    visitedPath = [0]*V
-
-    for i in range(V):
+    n = len(adj)
+    visited = [0]*n
+    ans = []
+    for i in range(n):
         if not visited[i]:
-            if dfs(i, adj, visited, visitedPath, V):
-                return True
-    return False
+            dfs(i, adj, visited, ans)
+    return ans[::-1]
 
 
-
-adj = [[1], [2], [3,6], [4], [5], [], [4], [8], [9], []]
-V = len(adj)
-print(isCyclic(V, adj))
+adj = [[], [0], [0], [0]]
+print(topologicalSort(adj))
