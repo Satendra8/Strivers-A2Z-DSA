@@ -1,30 +1,40 @@
-def dfs(node, adj, visited, ans):
-    visited[node] = 1
-    neighbours = adj[node]
-
-    for neighbour in neighbours:
-        if not visited[neighbour]:
-            dfs(neighbour, adj, visited, ans)
-    ans.append(node)
+def getIndegree(adj, n):
+    indegree = [0]*n
+    for i in range(n):
+        for node in adj[i]:
+            indegree[node] += 1
+    return indegree
 
 
-def topologicalSort(adj):
+def dfs(adj):
     """
-    DFS
-    1. whenever dfs for a node is done while returning put that in stack
-    2. run loop for all components
-    3. run normal dfs, while returning from a node put that node in stack
-    Time Complexity: O(V+E)
-    Space Complexity: 2V
+    BFS
+    1. Kahn's Algorithm
+    2. find indegree, insert all nodes with indegree 0 in queue
+    3. take them off from the queue, and reduce the indegree
+    4. if indegree becomes 0 push that node in queue
+    Time Complextiy: O(V+E)
+    Space Complexity: O(V)
     """
     n = len(adj)
-    visited = [0]*n
-    ans = []
+    indegree = getIndegree(adj, n)
+    queue = []
+
     for i in range(n):
-        if not visited[i]:
-            dfs(i, adj, visited, ans)
-    return ans[::-1]
+        if indegree[i] == 0:
+            queue.append(i)
+    topo = []
+
+    while queue:
+        curr = queue.pop(0)
+        topo.append(curr)
+
+        for neighbour in adj[curr]:
+            indegree[neighbour] -= 1
+            if indegree[neighbour] == 0:
+                queue.append(neighbour)
+    return topo
 
 
-adj = [[], [0], [0], [0]]
-print(topologicalSort(adj))
+adj = [[], [3], [3], [], [0,1], [0,2]]
+print(dfs(adj))
