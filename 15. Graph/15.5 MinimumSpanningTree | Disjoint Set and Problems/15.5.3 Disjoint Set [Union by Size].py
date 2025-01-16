@@ -31,11 +31,11 @@ class DisjointSet:
         Sv = self.size[Pv]
 
         if Su > Sv:
-            self.parent[v] = u
-            self.size[u] += self.size[v]
+            self.parent[Pv] = Pu
+            self.size[Pu] += self.size[Pv]
         else:
-            self.parent[u] = v
-            self.size[v] += self.size[u]
+            self.parent[Pu] = Pv
+            self.size[Pv] += self.size[Pu]
 
 ds = DisjointSet(7)
 ds.uniounBySize(1, 2)

@@ -31,12 +31,12 @@ class DisjointSet:
         Rv = self.rank[Pv]
 
         if Ru > Rv:
-            self.parent[v] = u
+            self.parent[Pv] = Pu
         elif Rv > Ru:
-            self.parent[u] = v
+            self.parent[Pu] = Pv
         else:
-            self.parent[v] = u
-            self.rank[u] += 1
+            self.parent[Pv] = Pu
+            self.rank[Pu] += 1
 
 ds = DisjointSet(7)
 ds.uniounByRank(1, 2)
