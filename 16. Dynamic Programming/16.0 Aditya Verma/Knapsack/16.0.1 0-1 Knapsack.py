@@ -37,6 +37,12 @@ def knapsackRecursive(capacity, val, wt, n):
 
 
 def knapsackMemoization(capacity, val, wt, n, t):
+    """
+    Memoizarion Approach
+    1. Same as reursion just storing prev results in a matrix
+    Time Complexity: O(N*capacity)
+    Space Complexity: O(N*capacity) + O(N) (recursion stack space)
+    """
     if n == 0 or capacity == 0:
         return 0
     
