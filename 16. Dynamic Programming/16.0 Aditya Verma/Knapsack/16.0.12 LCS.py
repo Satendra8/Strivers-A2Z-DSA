@@ -76,6 +76,29 @@ def longestCommonSubsequence(text1, text2):
     t = [[-1] * (n+1) for _ in range(m+1)]
     return LCS(text1, text2, m, n, t)
 
+
+
+def LCSTabulation(text1, text2):
+    """
+    1. initialization: as per recursion base case first row and col will be 0
+    2. same as recursive code: m will be i and n will be j
+    Time Complexity: O(M*N)
+    Space Complexity: O(M*N)
+    """
+    m = len(text1)
+    n = len(text2)
+
+    t = [[0] * (n+1) for _ in range(m+1)]
+
+    for i in range(1, m+1):
+        for j in range(1, n+1):
+            if text1[i-1] == text2[j-1]:
+                t[i][j] = 1 + t[i-1][j-1]
+            else:
+                t[i][j] = max(t[i-1][j], t[i][j-1])
+    return t[m][n]
+
+
 text1 = "abcde"
 text2 = "ace" 
-print(longestCommonSubsequence(text1, text2))
+print(LCSTabulation(text1, text2))
