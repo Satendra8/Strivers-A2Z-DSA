@@ -25,7 +25,7 @@ def dijkstra(adj, src):
     2. use a distance array initialize with infinite
     3. find neighbours, if any one is less than curr dist update in dist array
     Time Complexity: O(V+E)
-    Space Complexity: O(N) + O(N)    
+    Space Complexity: O(N) + O(N)
     """
     n = len(adj)
     dist = [float('inf')] * n

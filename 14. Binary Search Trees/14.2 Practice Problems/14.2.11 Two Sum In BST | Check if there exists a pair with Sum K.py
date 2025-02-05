@@ -85,7 +85,7 @@ class BSTIteraror:
 
 def twoSumOptimal(root, target):
     """
-    Brute Force Approach
+    Optimal Approach
     1. create next iterator
     2. create before iterator
     3. use 2 pointer approach to find the 2 sum

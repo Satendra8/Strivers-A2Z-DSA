@@ -68,7 +68,7 @@ def bstFromPreorderOptimal(preorder, upper_bound=2**31, index=None):
     2. if value at index lies inside upper bound create node and find its left and right
     3. if value does not in upper bound return None
     4. Base case: if done for all arr elements return None
-    Time Complexity: O(3) # visiting each node 3 times
+    Time Complexity: O(3*N) # visiting each node 3 times
     Space Complexity: O(1)
     """
     if not index:

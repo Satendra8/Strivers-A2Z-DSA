@@ -39,7 +39,6 @@ def networkDelayTime(times, n, k):
     6. retun max of dist array
     Time Complexity: n * len(times)
     Space Complexity: n
-    
     """
     adj = getAdj(times, n)
     dist = [float('inf')] * (n+1)
