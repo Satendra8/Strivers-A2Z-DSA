@@ -95,3 +95,32 @@ def findLongestSubarrayOptimized(arr, k):
 arr = [1,1,1]
 k = 4
 print(findLongestSubarrayOptimized(arr, k))  
+
+
+
+def longestSubarray(arr, k):
+    """
+    1. use a dict to keep track current sum
+    2. if current sum = k then i+1 will be length
+    3. if currSum - k exist in d, meaning, after excluding before that index, we will get k
+    4. keep updating the maxLength at both above condition
+    5. never overwrite the current sum
+    Time COmplexity: O(N)
+    Space COmplexity: O(N)
+    """
+    maxLength = 0
+    d = {}
+    currSum = 0
+    n = len(arr)
+    
+    for i in range(n):
+        currSum += arr[i]
+        
+        if currSum == k:
+            maxLength = max(maxLength, i+1)
+        elif (currSum - k) in d:
+            maxLength = max(maxLength, i - d[currSum - k])
+        
+        if currSum not in d:
+            d[currSum] = i
+    return maxLength

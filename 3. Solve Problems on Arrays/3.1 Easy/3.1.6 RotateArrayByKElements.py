@@ -42,3 +42,33 @@ n = 7
 k = 2
 rotate(arr, n, k)
 print("Rotated array =======", arr)
+
+
+def reverseArray(nums, i, j):
+    while i <= j:
+        nums[i], nums[j] = nums[j], nums[i]
+        i += 1
+        j -= 1
+
+def rotate(nums, k):
+    """
+    1. reverse the first part of array nums[0:n-k]
+    2. reverse the second part of array nums[n-k:n]
+    3. reverse the whole array, that will be ans
+    Time Complexity: O(N)
+    Space Complexity: O(1)
+    """
+    n = len(nums)
+    k = k%n
+    print(k)
+
+    reverseArray(nums, 0, n-k-1)
+    reverseArray(nums, n-k, n-1)
+    nums.reverse()
+
+
+
+nums = [-1,-100,3,99]
+k = 2
+rotate(nums, k)
+print(nums)

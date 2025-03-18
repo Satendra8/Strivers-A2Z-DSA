@@ -49,42 +49,47 @@ left=0      bottom=3
 """
 
 
-def spiral_matrix(arr):
+def spiralOrder(matrix):
     """
-    1. Time Complexity - O(m+n)
-    2. Space Complexity - O(1)
-	"""
-    n = len(arr[0]) #rows
-    m = len(arr) #columns
+    1. go from left to right
+    2. go from top to down
+    3. again from right to left
+    4. again down to top
+    5. edge case 1: don't go right to left if single row
+    5. edge case 2: don't go down to top if single column
+    Time Complexity: O(M*N)
+    Space Complexity: O(1)
+    """
+    ans = []
+    m = len(matrix)
+    n = len(matrix[0])
 
-    top=left=0
-    right=n-1
-    bottom=m-1
-    while left <= right and top <=bottom:
+    left = 0
+    right = n - 1
+    top = 0
+    down = m - 1
 
-		# move left => right
-        for i in range(top, right+1):
-            print(arr[top][i], end=" ")
+    while left <= right and top <= down:
+        for i in range(left, right+1):
+            ans.append(matrix[top][i])
         top += 1
-        
-		# move top => bottom
-        for i in range(top, bottom+1):
-            print(arr[i][right], end=" ")
-        right -= 1
-        
-		# move right => left
-        for i in range(right, left-1, -1):
-            print(arr[bottom][i], end=" ")
-        bottom -= 1
-        
-		# move bottom => top
-        for i in range(bottom, top-1, -1):
-            print(arr[i][left], end=" ")
-        left += 1
 
-arr = [[1, 2, 3],
-       [4, 5, 6],
-       [7, 8, 9],
-       [10,11,12]]
-spiral_matrix(arr)
-    
+        for i in range(top, down+1):
+            ans.append(matrix[i][right])
+        right -= 1
+
+        if top <= down: #if single row don't do this
+            for i in range(right, left-1, -1):
+                ans.append(matrix[down][i])
+            down -= 1
+
+        if left <= right: #if single column don't do this
+            for i in range(down, top-1, -1):
+                ans.append(matrix[i][left])
+            left += 1
+
+    return ans
+
+arr = matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+
+spiralOrder(arr)
