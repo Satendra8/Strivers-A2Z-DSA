@@ -155,3 +155,49 @@ def myAtoi(s):
     if num > MAX: return MAX
     if num < MIN: return MIN
     return num
+
+
+
+def atoi(s):
+    n = len(s)
+    INT_MIN = -2**31
+    INT_MAX = 2**31 - 1
+
+    ans = ""
+    isPositive = True
+    i = 0
+
+    while i < n and s[i] == " ":
+        i += 1
+        
+    if s[i] == '-':
+        isPositive = False
+        i += 1
+
+    if s[i] == '+':
+        i += 1
+
+    while i < n and s[i] == 0:
+        i += 1
+
+    while i < n and s[i].isdigit():
+        ans += s[i]
+        i += 1
+    
+    if not ans:
+        return 0
+
+    ans = int(ans)
+    
+    if not isPositive:
+        ans = -1 * ans
+
+    if ans < INT_MIN:
+        return INT_MIN
+    
+    if ans > INT_MAX:
+        return INT_MAX
+    return ans
+    
+s =  "words and 987"
+print(atoi(s))

@@ -1,3 +1,7 @@
+"""
+Q. Find first and last occurance of an element.
+"""
+
 def binarysearch(arr, k):
     """
     Binary Search

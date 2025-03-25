@@ -1,7 +1,11 @@
+"""
+Q. Binary Search Algorithm
+"""
+
 def binarysearch(arr, k):
     """
     Binary Search
-    1. if arr[mid] == k, move left to find first occurence
+    1. if arr[mid] == k return index
     2. if arr[mid] > k, move left
     3. if arr[mid] < k, move right
     Time Complexity: O(logN)
@@ -9,19 +13,17 @@ def binarysearch(arr, k):
     """
     low = 0
     high = len(arr) - 1
-    ans = -1
 
     while low <= high:
         mid = (low + high) // 2
 
         if arr[mid] == k:
-            ans = mid
-            high = mid - 1
+            return mid
         elif arr[mid] > k:
             high = mid - 1
         else:
             low = mid + 1
-    return ans
+    return -1
 
 arr = [1, 1, 1, 1, 2]
 k = 1
