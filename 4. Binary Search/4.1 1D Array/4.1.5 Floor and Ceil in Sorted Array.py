@@ -24,6 +24,7 @@ def floor_ceiling(a, n,x):
     6. Time Copmlexity: O(logN)
     7. Space Complexity: O(1)
     """
+    a.sort()
     left = 0
     right = n - 1
     floor = -1
@@ -40,9 +41,11 @@ def floor_ceiling(a, n,x):
             floor = a[mid]
             left = mid + 1   
     return floor, ceiling
-a = [3, 4, 4, 7, 8, 10]
-x = 2
-print(floor_ceiling(a, x))
+
+x = 28 
+a = [80, 59, 26, 46]
+
+print(floor_ceiling(a, 4,  x))
 
 """
 a = [3, 4, 4, 7, 8, 10] left=0, right=5, mid=2

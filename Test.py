@@ -1,28 +1,49 @@
-def binarysearch(arr, k):
+def getFloor(arr, x):
+    floor = -1
+    start = 0
+    end = len(arr) - 1
+    while start <= end:
+        mid = (start + end) // 2
+
+        if arr[mid] == x:
+            return arr[mid]
+        elif arr[mid] > x:
+            end = mid - 1
+        else:
+            floor = arr[mid]
+            start = mid + 1
+    return floor
+
+
+def getCeil(arr, x):
+    ceil = -1
+    start = 0
+    end = len(arr) - 1
+    while start <= end:
+        mid = (start + end) // 2
+
+        if arr[mid] == x:
+            return arr[mid]
+        elif arr[mid] > x:
+            ceil = arr[mid]
+            end = mid - 1
+        else:
+            start = mid + 1
+    return ceil
+
+
+def getFloorAndCeil(arr, x):
     """
     Binary Search
-    1. if arr[mid] == k, move left to find first occurence
-    2. if arr[mid] > k, move left
-    3. if arr[mid] < k, move right
+    1. if arr[mid] == k, floor and ceil is same
+    2. if arr[mid] > k, move left, store ceil (possible ans)
+    3. if arr[mid] < k, move right, store floor (possible ans)
     Time Complexity: O(logN)
     Space Complexity: O(1)
     """
-    low = 0
-    high = len(arr) - 1
-    ans = -1
+    return (getFloor(arr, x), getCeil(arr, x))
 
-    while low <= high:
-        mid = (low + high) // 2
 
-        if arr[mid] == k:
-            ans = mid
-            high = mid - 1
-        elif arr[mid] > k:
-            high = mid - 1
-        else:
-            low = mid + 1
-    return ans
-
-arr = [1, 1, 1, 1, 2]
-k = 1
-print(binarysearch(arr, k))
+x = 28 
+arr = [80, 59, 26, 46]
+print(getFloor(arr, x))
