@@ -148,3 +148,68 @@ arr = [4,2,1,6,7,5]
 head = ArrayToDLL(arr)
 head = SortOptimal(head)
 printLL(head)
+
+
+
+
+def merge(head1, head2):
+    if not head1:
+        return head2
+    if not head2:
+        return head1
+    if not head1 and not head2:
+        return None
+
+    new_head = Node(-1)
+    temp = new_head
+    left = head1
+    right = head2
+
+    while left and right:
+        if left.data < right.data:
+            temp.next = left
+            temp = left
+            left = left.next
+        else:
+            temp.next = right
+            temp = right
+            right = right.next
+
+    while left:
+        temp.next = left
+        temp = left
+        left = left.next
+        
+    while right:
+        temp.next = right
+        temp = right
+        right = right.next
+
+    return new_head.next
+        
+def midNode(head):
+    slow = head
+    fast = head.next
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow
+
+def sort(head):
+    if head is None or head.next is None:
+        return head
+
+    mid = midNode(head)
+    left = head
+    right = mid.next
+    mid.next = None
+    printLL(left)
+
+    leftNode = sort(left)
+    rightNode = sort(right)
+
+    return merge(leftNode, rightNode)
+
+
+

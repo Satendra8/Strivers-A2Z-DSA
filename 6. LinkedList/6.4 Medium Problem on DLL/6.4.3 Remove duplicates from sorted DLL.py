@@ -118,3 +118,23 @@ arr = [1,1,1,2,3,4,4]
 
 
 """
+
+
+def deleteNode(node):
+    if node.prev:
+        node.prev.next = node.next
+    if node.next:
+        node.next.prev = node.prev
+
+
+def removeDuplicates(head):
+    if not head and not head.next:
+        return head
+    
+    temp = head.next
+
+    while temp:
+        if temp.prev.data == temp.data:
+            deleteNode(temp)
+        temp = temp.next
+    return head

@@ -353,3 +353,64 @@ l2 = [5,6,4,9]
 
 
 """
+
+def addTwoNumbers(head1, head2):
+    if not head1:
+        return head2
+    if not head2:
+        return head1
+    
+    if not head1 and head2:
+        return None
+
+    l1 = countLL(head1)
+    l2 = countLL(head2)
+
+    if l1 > l2:
+        temp1_head = head1
+        temp2_head = head2
+    else:
+        temp1_head = head2
+        temp2_head = head1
+
+    temp1 = temp1_head
+    temp2 = temp2_head
+
+    carry = 0
+
+    while temp1 and temp2:
+        summ = temp1.data + temp2.data + carry
+        if summ > 9:
+            temp1.data = summ%10
+            carry = 1
+        else:
+            temp1.data = summ
+            carry = 0
+        prev = temp1
+        temp1 = temp1.next
+        temp2 = temp2.next
+
+    while temp1 and carry:
+        summ = temp1.data + carry
+        if summ > 9:
+            temp1.data = summ%10
+            carry = 1
+        else:
+            temp1.data = summ
+            carry = 0
+        prev = temp1
+        temp1 = temp1.next
+    
+    if carry:
+        node = Node(1)
+        prev.next = node
+    return temp1_head
+
+    
+
+l1 = [9,9,9,9,9,9,9]
+l2 = [9,9,9,9]
+head1 = ArrayToDLL(l1)
+head2 = ArrayToDLL(l2)
+head = addTwoNumbers(head1, head2)
+printLL(head)

@@ -109,3 +109,27 @@ x = 6
 6 -> [5,4,9]
 
 """
+
+
+def deleteNode(node):
+    if node.next:
+        node.next.prev = node.prev
+    if node.prev:
+        node.prev.next = node.next
+
+
+def deleteAllOccurance(head, x):
+    if not head:
+        return None
+
+    new_head = Node(-1)
+    new_head.next = head
+    head.prev = new_head
+
+    temp = new_head
+
+    while temp:
+        if temp.data == x:
+            deleteNode(temp)
+        temp = temp.next
+    return new_head.next

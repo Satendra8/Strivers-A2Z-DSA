@@ -114,3 +114,19 @@ arr = [1,3,4,7,1,2]
 head = ArrayToDLL(arr)
 head = deleteMiddleNodeOptimal(head)
 printLL(head)
+
+
+
+def deleteMiddleNode(head):
+    if not head:
+        return head
+    slow = head
+    fast = head
+    prev = None
+
+    while fast and fast.next:
+        prev = slow 
+        slow = slow.next
+        fast = fast.next.next
+    prev.next = slow.next
+    return head

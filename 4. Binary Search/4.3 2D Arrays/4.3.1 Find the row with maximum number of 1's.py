@@ -110,3 +110,72 @@ print(rowWithMaxis(arr))
 arr = [0, 0, 1]    left=1, right=2, mid=1
                    left=2, right=2, mid=2
 """
+
+def rowWithMax1s(arr):
+    """
+    Better Approach
+    1. find max sum for each row
+    2. whose sum is greater is row with max 1's
+    Time Complexity: O(M*N)
+    Space Complexity: O(1)
+    """
+    maxx  = 0
+    ans = -1
+
+    for row in range(len(arr)):
+        summ = sum(arr[row])
+        if summ > maxx:
+            ans = row
+            maxx = summ
+    return ans
+
+
+arr = [[0,1,1,1], [0,0,1,1], [1,1,1,1], [0,0,0,0]]
+print(rowWithMax1s(arr))
+
+
+
+
+
+
+
+
+
+def count1s(subarray):
+    n = len(subarray)
+    start = 0
+    end = n - 1
+
+    while start <= end:
+        mid = (start+end) // 2
+
+        if subarray[mid] == 1:
+            end = mid - 1
+        else:
+            start = mid + 1
+    print(start, end)
+    if start >= n:
+        return 0
+    return n - start
+
+def rowWithMax1s(arr):
+    """
+    Better Approach
+    1. find count of 1's for each row using Binary Search
+    2. whose sum is greater is row with max 1's
+    Time Complexity: O(M*N)
+    Space Complexity: O(1)
+    """
+    maxx  = 0
+    ans = -1
+
+    for row in range(len(arr)):
+        summ = count1s(arr[row])
+        if summ > maxx:
+            ans = row
+            maxx = summ
+    return ans
+
+
+arr = [[0,0], [0,0]]
+print(rowWithMax1s(arr))

@@ -162,3 +162,27 @@ common is 1
 
 
 """
+
+def intersection(head1, head2):
+    temp1 = head1
+    temp2 = head2
+
+    while temp1 and temp2:
+        temp1 = temp1.next
+        temp2 = temp2.next
+
+    new1 = head1
+    new2 = head2
+    while temp1:
+        new1 = new1.next
+        temp1 = temp1.next
+    while temp2:
+        new2 = new2.next
+        temp2 = temp2.next
+
+    while new1 and new2:
+        if new1 == new2:
+            return new1.data
+        new1 = new1.next
+        new2 = new2.next
+    return None

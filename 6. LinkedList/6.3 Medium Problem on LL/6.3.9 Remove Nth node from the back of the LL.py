@@ -122,3 +122,23 @@ arr = [1,2,3,4,5]
 head = ArrayToDLL(arr)
 head = removeNthHareAndTortoise(head, 1)
 printLL(head)
+
+
+def deleteNthNode(head, n):
+    slow = head
+    fast = head
+    prev = None
+
+    for i in range(n):
+        fast = fast.next
+
+    while fast:
+        prev = slow
+        slow = slow.next
+        fast = slow
+        for i in range(n):
+            fast = fast.next
+    if not prev:
+        return head.next
+    prev.next = slow.next
+    return head

@@ -124,3 +124,31 @@ possible numbers = [1,2,3,4,5,6,7,8,9]    left=1, right=9, mid=5
 
 ans = 5
 """
+
+
+
+def smallestDivisor(self, nums, threshold):
+    """
+    1. first divisor will be 1
+    2. last divisor will be max(nums), beyond this sum will be same
+    3. if sum is <= threshold that will be possible ans find better one in left part
+    4. if sum is grater move to the right
+    Time Complexity: O(NlogN)
+    Space Complexity: O(NlogN)
+    """
+    start = 1
+    end = max(nums)
+    ans = 1
+
+    while start <= end:
+        mid = (start+end) // 2
+
+        summ = 0
+        for num in nums:
+            summ += -(-num/mid)
+        if summ <= threshold:
+            ans = mid
+            end = mid - 1
+        else:
+            start = mid + 1
+    return ans

@@ -243,3 +243,39 @@ if all three present one.next points to head2.next
 ** never forget to make two.next NULL
 
 """
+
+def sort(head):
+    zero_head = Node(-1)
+    one_head = Node(-1)
+    two_head = Node(-1)
+
+    zero = zero_head
+    one = one_head
+    two = two_head
+
+    temp = head
+
+    while temp:
+        if temp.data == 0:
+            zero.next = temp
+            zero = temp
+        elif temp.data == 1:
+            one.next = temp
+            one = temp
+        else:
+            two.next = temp
+            two = temp
+        temp = temp.next
+
+    two.next = None
+    if not zero_head.next:
+        one.next = two_head.next
+        return one_head.next
+    if not one_head.next:
+        zero.next = two_head.next
+    else:
+        zero.next = one_head.next
+        one.next = two_head.next
+
+
+    return zero_head.next

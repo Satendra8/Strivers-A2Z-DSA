@@ -166,3 +166,41 @@ nums = [1,1,2,3,3,4,4,5,5,6,6]    left=1, right=9, mid=5
                            left=1, right=3, mid=2
 
 """
+
+def search(nums):
+    n = len(nums)
+
+    if n == 1:
+        return nums[0]
+    
+    if nums[0] != nums[1]:
+        return nums[0]
+    if nums[n-1] != nums[n-2]:
+        return nums[n-1]
+    
+    start = 0
+    end = n-1
+
+    while start <= end:
+        mid = (start+end) // 2
+        prev = mid-1
+        next = mid+1
+
+        if nums[prev] != nums[mid] and nums[next] != nums[mid]:
+            return nums[mid]
+        elif nums[prev] == nums[mid]:
+            if (prev - start) % 2 == 1:
+                end = prev - 1
+            else:
+                start = mid + 1
+        else:
+            if (end - next) % 2 == 1:
+                start = end + 1
+            else:
+                end = mid - 1
+    return -1
+
+
+
+nums = [1,1,2,3,3,4,4,8,8]
+print(search(nums))
