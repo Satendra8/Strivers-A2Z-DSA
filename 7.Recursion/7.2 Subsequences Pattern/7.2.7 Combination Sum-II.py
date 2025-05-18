@@ -85,3 +85,39 @@ l = []
 n = len(candidates)
 combinationOptimal(candidates, 0, target, [], l, n)
 print(l)
+
+
+
+
+
+
+
+def solve(arr, k, index, output, ans, n):
+    """
+    1. use IP-OP method
+    2. catch: we can use same element multiple times
+    3. choices + decisions
+    4. choice 1: not choose current element and move
+    5. choice 2: choose current element and move
+    """
+    if sum(output) > k:
+        return
+    if sum(output) == k:
+        if output not in ans:
+            ans.append(output)
+            return
+    if index == n:
+        return
+    #not choose
+    solve(arr, k, index+1, output, ans, n)
+    #choose
+    solve(arr, k, index+1,output+[arr[index]], ans, n)
+
+
+candidates = [2,5,2,1,2]
+target = 5
+n = len(candidates)
+ans = []
+candidates.sort()
+solve(candidates, target, 0, [], ans, n)
+print(ans)

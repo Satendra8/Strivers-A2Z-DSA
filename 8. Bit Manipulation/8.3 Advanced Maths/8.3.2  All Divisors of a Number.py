@@ -94,3 +94,21 @@ def print_divisor_gfg_optimal(N):
 
 N = 39
 print(print_divisor_gfg_optimal(N))
+
+
+
+def largestPrimeFactor(n):
+    ans1 = []
+    ans2 = []
+
+    for i in range(1, math.ceil(math.sqrt(n+1))):
+        if n % i == 0:
+            ans1.append(i)
+            if i != n//i:
+                ans2.append(n//i)
+    ans2.reverse()
+    ans1.extend(ans2)
+    return ans1
+
+n = 4
+print(largestPrimeFactor(n))

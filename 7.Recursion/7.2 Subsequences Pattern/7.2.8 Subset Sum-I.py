@@ -41,3 +41,29 @@ n = 3
 l = []
 subsetSum(arr, 0, 0, n, l)
 print(l)
+
+
+
+
+def solve(nums, index, output, ans, n):
+    """
+    1. use IP-OP method
+    2. decision 1: don't add current number to ans
+    3. decision 2: add current number to ans
+    """
+    if index == n:
+        ans.append(output)
+        return
+    
+    #not add
+    solve(nums, index+1, output, ans, n)
+
+    #add
+    solve(nums, index+1, output+nums[index], ans, n)
+
+
+nums = [5, 2, 1]
+ans = []
+n = len(nums)
+solve(nums, 0, 0, ans, n)
+print(ans)

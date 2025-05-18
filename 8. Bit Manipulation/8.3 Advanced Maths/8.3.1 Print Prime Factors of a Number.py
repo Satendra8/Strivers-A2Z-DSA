@@ -105,3 +105,29 @@ def AllPrimeFactorsOptimal(N):
 
 N = 10
 print(AllPrimeFactorsOptimal(N))
+
+
+
+
+import math
+
+def largestPrimeFactor(n):
+    """
+    1. use old school method
+    2. check if N is divisible then keep dividing
+    3. update N by N/i
+    4. if n becomes 1 means we have captured lagest prime
+    5. otherwise largest number is remainder
+    6. Time Complexity: O(sqrt(N))
+    7. Space Complexity: O(1)
+    """
+    for i in range(2, math.ceil(math.sqrt(n))+1):
+        while n % i == 0:
+            n = n/i
+            ans = i
+    if n == 1:
+        return ans
+    return n
+
+n = 4
+print(largestPrimeFactor(n))

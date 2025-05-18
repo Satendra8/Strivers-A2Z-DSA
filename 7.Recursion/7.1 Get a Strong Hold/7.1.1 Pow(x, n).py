@@ -111,3 +111,19 @@ ans = 8*16*16*16
 (16)^1 = odd = 16 * (16)^0
 
 """
+
+
+def recursivePow(x, n):
+    if n == 1:
+        return x
+    
+    if n%2 == 1:
+        return x * recursivePow(x, n-1)
+    else:
+        return recursivePow(x*x, n//2)
+    
+
+x = 3
+n = 3
+
+print(recursivePow(x, n))

@@ -91,5 +91,23 @@ def findPrimeFactorsOptimal(N):
     return ans
 
 
-N = 17
-print(findPrimeFactorsBetter(N))
+N = 20
+print(findPrimeFactorsOptimal(N))
+
+
+
+# def AllPrimeFactors(N):
+#     ans = set()
+#     if N == 1:
+#         return ans
+
+#     for i in range(2, int(math.ceil(math.sqrt(N+1)))):
+#         while N%i == 0:
+#             N = N//i
+#             ans.add(i)
+#     if N != 1:
+#         ans.add(N)
+#     return ans
+
+# N = 100
+# print(AllPrimeFactors(N))

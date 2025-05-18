@@ -40,3 +40,39 @@ def reverse(stack):
 stack = [3,2,1,7,6]
 reverse(stack)
 print(stack)
+
+
+
+def insert(stack, element):
+    """
+    1. using IBH Method
+    2. Hypothesis: remove last element and try to insert the element
+    3. Base Condition: if len of stack is 0, that is the begining, insert the element
+    4. Induction: insert the last element at the end
+    """
+    if len(stack) == 0:
+        stack.append(element)
+        return
+    last = stack.pop()
+    insert(stack, element)
+    stack.append(last)
+    return
+
+
+def reverse(stack):
+    """
+    1. using IBH Method
+    2. Hypothesis: reverse n-1 element, then insert the nth element at beginning
+    3. Base Condition: if len of stack is 1, it is already sorted
+    4. Induction: insert the nth element at begining
+    """
+    if len(stack) == 1:
+        return
+    last = stack.pop()
+    reverse(stack)
+    insert(stack, last)
+    return
+
+st = [3,2,1,7,6]
+reverse(st)
+print(st)

@@ -79,3 +79,36 @@ print(findXOR(l, r))
 13 => 1101   1^2...^13   =  1
 14 => 1110   1^2...^14  =  15
 """
+
+
+
+def findXor(n):
+    """
+    1. find out XOR of number till 14
+    2. make group of 4
+    3. 1%4 = 1, 2%4 = n+1, 3%4 = 0, 4%4 = n
+    4. Time Complexity: O(1)
+    5. Space Complexity: O(1)
+    """
+    if n%4 == 1:
+        return 1
+    if n%4 == 2:
+        return n+1
+    if n%4 == 3:
+        return 0
+    if n%4 == 0:
+        return n
+
+def findXorLtoR(L, R):
+    """
+    1. find xor 1 to L-1
+    2. find xor 1 to R
+    3. L = 4, R = 7
+    4. (1^2^3) ^ (1^2^3^4^5^6^7)
+    5. same number will be cancelled and ans will be (4^5^6^7)
+    """
+    return findXor(L-1) ^ findXor(R)
+
+L = 3
+R = 5
+print(findXorLtoR(L, R))

@@ -69,3 +69,20 @@ def sieve(N):
 
 N = 2
 print(sieve(10))
+
+
+
+def sieve(n):
+    if n < 2:
+        return 0
+    arr = [1] * (n)
+    arr[0] = 0
+    arr[1] = 0
+
+    for i in range(2, int(math.ceil(math.sqrt(n+1)))):
+        for j in range(i*i, n, i):
+            arr[j] = 0
+    return sum(arr)
+
+n = 2
+print(sieve(n))

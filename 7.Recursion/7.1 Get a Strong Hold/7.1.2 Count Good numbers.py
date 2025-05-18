@@ -119,3 +119,71 @@ n = 4 = even = (2 even) + (2 odd)
 n = 5 = odd = (2 even) + (2 odd) + 1 even
 n = 6 = odd = (3 even) + (3 odd)
 """
+
+def count(n):
+    MOD = 10**9+7
+    ans = 1
+    for i in range(n):
+        if i % 2 == 1:
+            ans = (ans * 4) % MOD
+        else:
+            ans = (ans * 5) % MOD
+    return ans % MOD
+
+n = 4
+print(count(n))
+
+
+def countOptimal(n):
+    MOD = 10**9+7
+    ans = 1
+
+    ans = (pow(5*4, n//2)) % MOD
+
+    if n%2 == 1:
+        ans = (ans * 5) % MOD
+    return ans
+
+n = 4
+print(countOptimal(n))
+
+
+
+def countRecursive(n):
+    MOD = 10**9+7
+    print(n)
+    if n == 1:
+        return 5
+    if n % 2 == 1:
+        return (5 * (countRecursive(n-1) % MOD)) % MOD
+    else:
+        return (4 * (countRecursive(n-1) % MOD) % MOD)
+    
+n = 50
+print(countRecursive(n))
+
+
+
+def recursivePow(x, n):
+    MOD = 10**9+7
+    if n == 1:
+        return x
+    
+    if n%2 == 1:
+        return (x * recursivePow(x, n-1) % MOD) % MOD
+    else:
+        return recursivePow(x*x, n//2) % MOD
+
+
+def countRecursiveOptimal(n):
+    MOD = 10**9+7
+    ans = 1
+
+    ans = (recursivePow(5*4, n//2)) % MOD
+
+    if n%2 == 1:
+        ans = (ans * 5) % MOD
+    return ans
+
+n = 50
+print(countRecursiveOptimal(n))

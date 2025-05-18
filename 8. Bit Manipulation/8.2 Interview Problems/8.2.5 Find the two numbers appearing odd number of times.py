@@ -47,3 +47,32 @@ def twoOddNum(Arr, N):
 Arr = [4, 2, 4, 5, 2, 3, 3, 1]
 N = 8
 print(twoOddNum(Arr, N))
+
+
+def findRightMostSetBit(n):
+    for i in range(31):
+        if n & (1<<i) > 0:
+            return i
+    return -1
+
+def f(arr):
+    all_xor = 0
+    for num in arr:
+        all_xor = all_xor ^ num
+    
+    set_bit = findRightMostSetBit(all_xor)
+
+    xor_0 = 0
+    xor_1 = 0
+    for num in arr:
+        if num & (1 << set_bit) > 0:
+            xor_1 = xor_1 ^ num
+        else:
+            xor_0 = xor_0 ^ num
+    first = all_xor ^ xor_0
+    second = all_xor ^ xor_1
+    return first, second
+    
+
+arr = [1, 7, 5, 7, 5, 4, 7, 4]
+print(f(arr))

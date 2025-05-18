@@ -62,3 +62,38 @@ l = []
 n = len(candidates)
 combination(candidates, 0, target, [], l, n)
 print(l)
+
+
+
+def solve(arr, k, index, output, ans, n):
+    """
+    1. use IP-OP method
+    2. catch: we can use same element multiple times
+    3. choices + decisions
+    4. choice 1: not choose current element and move
+    5. choice 2: choose current element and move
+    6. choice 3: choose current element but not move
+    """
+    if sum(output) > k:
+        return
+    if sum(output) == k:
+        if output not in ans:
+            ans.append(output)
+            return
+    if index == n:
+        return
+    #not choose
+    solve(arr, k, index+1, output, ans, n)
+    #choose
+    #move
+    solve(arr, k, index+1,output+[arr[index]], ans, n)
+    #not move
+    solve(arr, k, index,output+[arr[index]], ans, n)
+
+
+candidates = [2]
+target = 1
+n = len(candidates)
+ans = []
+solve(candidates, target, 0, [], ans, n)
+print(ans)
