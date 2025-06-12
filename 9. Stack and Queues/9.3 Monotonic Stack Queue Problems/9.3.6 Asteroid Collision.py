@@ -24,6 +24,7 @@ Explanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulti
 
 def asteroidCollision(asteroids):
     """
+    Imagine +ve asteroids are moving to --> and -ve moving to <--
     1. iterate till n
     2. if positive element found push in stack
     3. if negative element found keep poping (if -ve element is greater)

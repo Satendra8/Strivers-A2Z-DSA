@@ -166,3 +166,110 @@ print(subArrayRangesOptimal(nums))
 3. do maximum sum - minimum sum
 
 """
+
+
+def NGR(arr, n):
+    stack = []
+    ans = []
+
+    for i in range(n-1, -1, -1):
+        if not stack:
+            ans.append(n-i)
+        elif arr[i] < stack[-1][0]:
+            ans.append(stack[-1][1] - i)                                                                       
+        else:
+            while stack and arr[i] >= stack[-1][0]:
+                stack.pop()
+            if not stack:
+                ans.append(n-i)
+            else:
+                ans.append(stack[-1][1] - i)
+        stack.append((arr[i], i))
+    ans.reverse()
+    return ans
+
+  
+def NGL(arr, n):
+    stack = []
+    ans = []
+
+    for i in range(n):
+        if not stack:
+            ans.append(i-(-1))
+        elif arr[i] <= stack[-1][0]:
+            ans.append(i - stack[-1][1])
+        else:
+            while stack and arr[i] > stack[-1][0]:
+                stack.pop()
+            if not stack:
+                ans.append(i-(-1))
+            else:
+                ans.append(i - stack[-1][1])
+        stack.append((arr[i], i))
+    return ans
+
+
+def NSR(arr, n):
+    stack = []
+    ans = []
+
+    for i in range(n-1, -1, -1):
+        if not stack:
+            ans.append(n-i)
+        elif arr[i] > stack[-1][0]:
+            ans.append(stack[-1][1] - i)
+        else:
+            while stack and arr[i] <= stack[-1][0]:
+                stack.pop()
+            if not stack:
+                ans.append(n-i)
+            else:
+                ans.append(stack[-1][1] - i)
+        stack.append((arr[i], i))
+    ans.reverse()
+    return ans
+
+  
+def NSL(arr, n):
+    stack = []
+    ans = []
+
+    for i in range(n):
+        if not stack:
+            ans.append(i-(-1))
+        elif arr[i] >= stack[-1][0]:
+            ans.append(i - stack[-1][1])
+        else:
+            while stack and arr[i] < stack[-1][0]:
+                stack.pop()
+            if not stack:
+                ans.append(i-(-1))
+            else:
+                ans.append(i - stack[-1][1])
+        stack.append((arr[i], i))
+    return ans
+
+
+def subarray(arr):
+    """
+    edge case: if duplicate elements count them while finding NGL and NSL
+    """
+    n = len(arr)
+
+    next_largest = NGR(arr, n)
+    prev_largest = NGL(arr, n)
+
+    next_smallest = NSR(arr, n)
+    prev_smallest = NSL(arr, n)
+
+    greater = 0
+    smaller = 0
+
+    for i in range(n):
+        greater += next_largest[i] * prev_largest[i] * arr[i]
+        smaller += next_smallest[i] * prev_smallest[i] * arr[i]
+
+    return greater - smaller
+
+nums = [4,-2,-3,4,1]
+print(subarray(nums))

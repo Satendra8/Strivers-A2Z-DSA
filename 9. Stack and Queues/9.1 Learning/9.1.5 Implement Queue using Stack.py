@@ -89,3 +89,41 @@ print(q.s1)
 print(q.peek())
 q.Pop()
 print(q.peek())
+
+
+
+from queue import LifoQueue
+
+class Queue:
+    def __init__(self):
+        self.stack1 = LifoQueue()
+
+    def push(self, n):
+        stack2 = LifoQueue()
+        for i in range(self.stack1._qsize()):
+            stack2.put(self.stack1.get())
+        self.stack1.put(n)
+        for i in range(stack2._qsize()):
+            self.stack1.put(stack2.get())
+
+    def pop(self):
+        return self.stack1.get()
+
+    def top(self):
+        return self.stack1.queue[-1]
+    
+    def size(self):
+        return self.stack1._qsize()
+
+S = Queue()
+S.push(4)
+S.push(9)
+S.push(2)
+S.push(5)
+print(S.top()) #4
+print(S.pop()) #4
+print(S.pop()) #9
+print(S.pop()) #2
+print(S.top()) #5
+S.push(1)
+print(S.top()) #5

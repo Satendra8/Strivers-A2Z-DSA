@@ -1,17 +1,23 @@
-import math
+def stockSpan(arr):
+    n = len(arr)
+    stack = []
+    ans = []
 
-def pow(x, n):
-    ans = 1
-    while n > 1:
-        if n%2 == 0:
-            x = x * x
-            n = n // 2
+    for i in range(n):
+        if not stack:
+            ans.append(i+1)
+        elif arr[i] <= stack[-1][0]:
+            ans.append(i - stack[-1][1])
         else:
-            ans = ans * x
-            n = n-1
-    ans = ans * x
+            while stack and arr[i] > stack[-1][0]:
+                stack.pop()
+            if not stack:
+                ans.append(i+1)
+            else:
+                ans.append(i - stack[-1][1])
+        print(stack)
+        stack.append((arr[i], i))
     return ans
 
-x = 2
-n = 3
-print(pow(x, n))
+arr = [120, 100, 60, 80, 90, 110, 115]
+print(stockSpan(arr))

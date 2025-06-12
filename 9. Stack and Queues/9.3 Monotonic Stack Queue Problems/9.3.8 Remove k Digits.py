@@ -56,3 +56,33 @@ def removeKDigits(num, k):
 num = "1173"
 k = 2
 print(removeKDigits(num, k))
+
+
+
+def removeKDigits(num, k):
+    n = len(num)
+    print(n)
+    if k == 0:
+        return num
+    
+    if n == k:
+        return '0'
+
+    stack = []
+    for c in num:
+        if stack and int(stack[-1]) >= int(c) and k > 0:
+            stack.pop()
+            k -= 1
+        stack.append(c)
+    while k > 0:
+        stack.pop()
+        k -= 1
+    ans = "".join(stack)
+    ans = ans.lstrip('0')
+    if not ans:
+        return '0'
+    return ans
+
+num = "33526221184202197273"
+k = 19
+print(removeKDigits(num, k))

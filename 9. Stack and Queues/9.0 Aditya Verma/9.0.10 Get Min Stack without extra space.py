@@ -99,3 +99,57 @@ st.push(29)
 st.push(15)
 st.push(16)
 print(st.getMin())
+
+
+
+from queue import LifoQueue
+
+class Stack:
+    def __init__(self):
+        self.stack = LifoQueue()
+        self.minEle = 0
+
+    def push(self, n):
+        if self.stack.empty():
+            self.stack.put(n)
+            self.minEle = n
+        
+        elif n > self.minEle:
+            self.stack.put(n)
+        else:
+            self.stack.put(2*n-self.minEle)
+            self.minEle = n
+        return
+
+    def pop(self):
+        if self.stack.empty():
+            return -1
+        if self.stack.queue[-1] > self.minEle:
+            return self.stack.get()
+        x = self.minEle
+        self.minEle = 2*self.minEle - self.stack.get()
+        return x
+
+    def top(self):
+        if self.stack.empty():
+            return -1
+        if self.minEle > self.stack.queue[-1]:
+            return self.minEle
+        return self.self.stack.queue[-1]
+
+    def minElement(self):
+        if self.stack.empty():
+            return -1
+        return self.minEle
+
+st = Stack()
+arr = [18, 19, 29, 15, 16]
+
+st.push(18)
+st.push(19)
+st.push(29)
+st.push(15)
+st.push(16)
+st.pop()
+st.pop()
+print(st.minElement())

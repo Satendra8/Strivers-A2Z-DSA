@@ -17,3 +17,15 @@ Queue Functions:
     iv. front
     v. size
 
+
+Pattern 1: take array size fixed
+    1. implement stack using array
+    2. implement queue using array (make circular using %)
+
+Pattern2: making dynamic using linked list
+    1. implement stack using linkedlist (mark top as head node always)
+    2. implement queue using linkedlist (make circular using %)
+
+Pattern3: use inbuilt python stack and queue
+    1. implement stack using queue (push the element, push n-1 element again after current element)
+    2. implement queue using stack (use two stack), 

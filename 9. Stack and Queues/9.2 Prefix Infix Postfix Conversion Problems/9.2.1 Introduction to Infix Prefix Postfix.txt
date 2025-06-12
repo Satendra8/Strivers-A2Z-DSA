@@ -7,3 +7,18 @@
 1. Infix to Postfix
 
     s = a + b * (c ^ d - e)
+
+
+
+Pattern 1: use precidence for operators, handle () brackets
+    1. infix to postfix
+    2. infix to prefix
+        -> reverse string
+        -> find postfix
+        -> reverse the ans
+
+Pattern 2: pop last 2 operand and make ans
+    1. prefix to infix (reverse)
+    2. prefix to postfix (reverse)
+    3. postfix to prefix
+    4. postfix to infix
