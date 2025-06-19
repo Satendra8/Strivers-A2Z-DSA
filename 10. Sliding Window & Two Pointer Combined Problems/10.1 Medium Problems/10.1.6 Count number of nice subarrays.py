@@ -86,3 +86,36 @@ def numberOfSubarraysOptimal(nums, k):
 nums = [2,4,6]
 k = 1
 print(numberOfSubarraysOptimal(nums, k))
+
+
+def count(nums, k):
+    """
+    Sliding Window
+    Pattern: Atmost - Atleast
+    Identification: not sure whether to move i or j
+    Find for odd_count <= k then odd_count <= k-1, then subtract to get answer
+    """
+    n = len(nums)
+    ans = 0
+    i = 0
+    j = 0
+    odd_count = 0
+
+    while j < n:
+        if nums[j] % 2 == 1:
+            odd_count += 1
+        if odd_count > k:
+            while odd_count > k:
+                if nums[i] % 2 == 1:
+                    odd_count -= 1
+                i += 1
+        ans += (j-i+1)
+        j += 1
+    return ans
+
+def countSubarrays(nums, k):
+    return count(nums, k) - count(nums, k-1)
+
+nums = [2,2,2,1,2,2,1,2,2,2]
+k = 2
+print(countSubarrays(nums, k))

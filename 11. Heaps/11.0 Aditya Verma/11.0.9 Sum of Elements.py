@@ -58,3 +58,32 @@ K1 = 2
 K2 = 6
 
 print(sumBetweenTwoKth(A, N, K1, K2))
+
+
+
+
+def sumOfElements(arr, K1, K2):
+    """
+    Optimal Approach
+    1. push all elements till K2
+    2. pop the K2
+    3. add up elements between K2 and K1 for ans
+    """
+    heap = []
+    ans = 0
+
+    for num in arr:
+        heapq.heappush(heap, -num)
+        if len(heap) > K2:
+            heapq.heappop(heap)
+    heapq.heappop(heap)
+    while len(heap) > K1:
+        ans += (-heapq.heappop(heap))
+    return ans
+
+
+
+arr = [10, 2, 50, 12, 48, 13]
+K1 = 2
+K2 = 6
+print(sumOfElements(arr, K1, K2))

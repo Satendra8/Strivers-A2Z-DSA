@@ -107,3 +107,38 @@ def numberOfSubstringsOptimal(s):
 s = "abc"
 print(numberOfSubstringsOptimal(s))
 
+
+
+def count(s):
+    """
+    Sliding Window
+    Pattern: Atmost - Atleast
+    Identification: not sure whether to move i or j
+    Find for len <= 3, this is derived by n * (n+1) // 2
+    Then for len <= 2, then subtract to get answer
+    """
+    n = len(s)
+    i = 0
+    j = 0
+    d = {}
+    ans = 0
+
+    while j<n:
+        if s[j] in d:
+            d[s[j]] += 1
+        else:
+            d[s[j]] = 1
+        
+        if len(d) > 2:
+            while len(d) > 2:
+                d[s[i]] -= 1
+                if d[s[i]] == 0:
+                    del d[s[i]]
+                i += 1
+        ans += (j-i+1)
+        j += 1
+    return ((n * (n+1)) // 2) - ans
+        
+
+s = "abbbbbb"
+print(count(s))

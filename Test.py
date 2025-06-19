@@ -1,23 +1,21 @@
-def stockSpan(arr):
-    n = len(arr)
-    stack = []
-    ans = []
+import heapq
 
-    for i in range(n):
-        if not stack:
-            ans.append(i+1)
-        elif arr[i] <= stack[-1][0]:
-            ans.append(i - stack[-1][1])
-        else:
-            while stack and arr[i] > stack[-1][0]:
-                stack.pop()
-            if not stack:
-                ans.append(i+1)
-            else:
-                ans.append(i - stack[-1][1])
-        print(stack)
-        stack.append((arr[i], i))
+def sumOfElements(arr, K1, K2):
+    heap = []
+    ans = 0
+
+    for num in arr:
+        heapq.heappush(heap, -num)
+        if len(heap) > K2:
+            heapq.heappop(heap)
+    heapq.heappop(heap)
+    while len(heap) > K1:
+        ans += (-heapq.heappop(heap))
     return ans
 
-arr = [120, 100, 60, 80, 90, 110, 115]
-print(stockSpan(arr))
+
+
+arr = [10, 2, 50, 12, 48, 13]
+K1 = 2
+K2 = 6
+print(sumOfElements(arr, K1, K2))

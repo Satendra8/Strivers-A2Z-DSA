@@ -104,8 +104,8 @@ def numSubarraysWithSumOptimal(nums, goal):
     return countSubarray(nums, goal) - countSubarray(nums, goal-1)
 
 
-nums = [0,0,0,0,0]
-goal = 0
+nums = [1,0,0,1,1,0]
+goal = 2
 print(numSubarraysWithSumOptimal(nums, goal))
 
 """
@@ -116,4 +116,56 @@ counter = 3
 summ = 1
 
 
+"""
+
+
+def atmostSum(arr, k):
+    if k < 0:
+        return 0
+    n = len(arr)
+    i = 0
+    j = 0
+    summ = 0
+    cnt = 0
+
+    while j < n:
+        summ += arr[j]
+        
+        if summ > k:
+            while summ > k:
+                summ -= arr[i]
+                i += 1
+        cnt += (j-i+1)
+        j += 1
+    return cnt
+
+        
+def numberOfSubarrays(arr, target):
+    """
+    1. Sliding Window
+    2. In normal sliding window - not sure whether to move i or move j
+    3. finding the sum <= k
+    4. then finding sum <= k-1, then subtracting both to find sum = k
+    5. sliding window: consider the current element as last element and count all subarrays
+        [1, 1, 0, 1, 1], for index=2, possible subarrays are 0, 10, 110 (all ending at 0)
+    6. edge case: while doing k - 1, this can become negative so return 0 if negative
+    Time Complexity: O(2N+2N)
+    Space Complexity: O(1)
+    """
+    return atmostSum(arr, target) - atmostSum(arr, target-1)
+
+
+arr = [1, 1, 0, 1, 1]
+target = 5
+print(numberOfSubarrays(arr, target))
+
+
+"""
+Sliding Window
+Pattern: Atmost - Atleast
+Identification: not sure whether to move i or j
+Questions:
+    1. Binary subarray with sum
+    2. Count number of nice subarrays
+    3. Number of substring containing all three characters
 """

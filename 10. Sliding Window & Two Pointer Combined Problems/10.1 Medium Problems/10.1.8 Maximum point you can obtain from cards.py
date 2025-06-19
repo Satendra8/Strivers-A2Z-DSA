@@ -61,3 +61,46 @@ cardPoints = [9,7,7,9,7,7,9]
 k = 7
 
 """
+
+
+def maximum(cardPoints, k):
+    """
+    Sliding window
+    take first k elements
+    keep removing 1 by 1 and take from last
+    keep updating max
+    """
+    n = len(cardPoints)
+    i = k-1
+    j = n-1
+    lsum = sum(cardPoints[:k])
+    rsum = 0
+    ans = lsum + rsum
+
+    while i >= 0:
+        lsum -= cardPoints[i]
+        rsum += cardPoints[j]
+        ans = max(ans, lsum+rsum)
+        i -= 1
+        j -= 1
+    return ans
+        
+
+cardPoints = [1,2,3,4,5,6,1]
+k = 3
+print(maximum(cardPoints, k))
+
+"""
+cardPoints = [11,49,100,20,86,29,72]
+k = 4
+
+lsum = 180  rsum = 0  ans = 0
+lsum = 160  rsum = 72  ans = 232
+lsum = 60  rsum = 101  ans = 161
+lsum = 11  rsum = 187  ans = 197
+lsum = 0  rsum = 207  ans = 207
+
+i = 0
+j = 3
+
+"""
