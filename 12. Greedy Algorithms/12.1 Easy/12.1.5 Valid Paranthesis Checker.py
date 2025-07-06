@@ -137,7 +137,7 @@ def checkValidStringBetter(s):
 def checkValidStringOptimal(s):
     """
     Use Greedy Approach
-    1. use two variable to keep minimum and maximum left paranthesis
+    1. use two variable to keep range (minimum and maximum) left paranthesis
     2. if ( increment both
     3. if ) decrement both
     4. if * once consider ) (decrement min) once ( (increment max)

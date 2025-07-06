@@ -22,9 +22,9 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 def insert(intervals, newInterval):
     """
     Better Approach
-                    |                   |
+                       |                   |
     intervals = [[1,2],|[3,5],[6,7],[8,10],|[12,16]]
-                    |                   |
+                       |                   |
                 Left   |      Mid          | Right
 
     newInterval = [4,8]

@@ -41,9 +41,9 @@ def removeDuplicate(arr):
 
 def removeDuplicatesOptimized(arr):
     """
+    1. 
     Time Complexity : O(n)
     Space Complexity : O(1)
-    
     """
     n = len(arr)
     
@@ -62,4 +62,4 @@ def removeDuplicatesOptimized(arr):
     print("Counter", counter)
     return arr
             
-print(removeDuplicatesOptimized([1, 2,3,4,4,4,4,5,5,5,5]))
+print(removeDuplicatesOptimized([1,2,3,4,4,4,4,5,5,5,5]))

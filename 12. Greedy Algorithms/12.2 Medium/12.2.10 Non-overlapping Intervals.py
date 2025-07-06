@@ -47,3 +47,20 @@ def eraseOverlapIntervals(intervals):
 
 intervals = [[1,2],[2,3],[3,4],[-100,-2],[5,7]]
 print(eraseOverlapIntervals(intervals))
+
+
+
+def eraseOverlapIntervals(intervals):
+    n = len(intervals)
+    intervals.sort(key=lambda x:x[1])
+    prev = intervals[0]
+    i = 1
+    cnt = 0
+
+    while i < n:
+        if intervals[i][0] >= prev[1]:
+            prev = intervals[i]
+        else:
+            cnt += 1
+        i += 1
+    return cnt

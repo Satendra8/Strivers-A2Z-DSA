@@ -56,3 +56,36 @@ class Solution:
 
 jobs = [Job(1,3,50), Job(2,1,10), Job(3,2,20), Job(4,2,30)]
 print(Solution.jobScheduling(jobs))
+
+
+def jobSequencing(profits, deadlines):
+    """
+    1. sort by profit desc
+    2. create slot of max(deadlines)
+    3.  0___1___2___3___4
+    4. put the max profit job by their deadline, if there is aleady an element on deadline then move backward to check empty slots
+    Time Complexity: NlogN + N * slots
+    Space Complexity: N + slots
+    """
+    slots = max(deadlines)
+    jobs = zip(profits, deadlines)
+    jobs = sorted(jobs, key=lambda x: x[0], reverse=True)
+    slot_array = [0]*slots
+    count = 0
+
+    for p, d in jobs:
+        # for optimization use Disjoint Unioun Set to replace the below loop
+        for i in range(d-1, -1, -1):
+            if slot_array[i] == 0:
+                count += 1
+                slot_array[i] = p
+                break
+    return count, sum(slot_array)
+    
+
+
+
+deadlines = [3, 1, 2, 2]
+profits = [50, 10, 20, 30]
+print(jobSequencing(profits, deadlines))
+

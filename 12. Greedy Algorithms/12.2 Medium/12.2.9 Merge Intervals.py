@@ -37,5 +37,30 @@ def merge(intervals):
         i += 1
     return ans
 
-intervals = [[1,4],[4,5]]
+intervals = [[1,4],[0,0]]
+print(merge(intervals))
+
+
+
+def merge(intervals):
+    """ similar as prev problem (insert interval)"""
+    n = len(intervals)
+    intervals.sort(key=lambda x:x[0])
+    ans = [intervals[0]]
+    i = 1
+    print(intervals)
+    while i < n and ans[-1][1] < intervals[i][0]:
+        ans.append(intervals[i])
+        i += 1
+    while i < n:
+        if ans[-1][1] >= intervals[i][0]:
+            ans[-1][0] = min(ans[-1][0], intervals[i][0])
+            ans[-1][1] = max(ans[-1][1], intervals[i][1])
+        else:
+            ans.append(intervals[i])
+        i += 1
+    return ans
+
+
+intervals = [[2,3],[2,2],[3,3],[1,3],[5,7],[2,2],[4,6]]
 print(merge(intervals))

@@ -1,21 +1,30 @@
-import heapq
-
-def sumOfElements(arr, K1, K2):
-    heap = []
-    ans = 0
-
-    for num in arr:
-        heapq.heappush(heap, -num)
-        if len(heap) > K2:
-            heapq.heappop(heap)
-    heapq.heappop(heap)
-    while len(heap) > K1:
-        ans += (-heapq.heappop(heap))
-    return ans
+class Node:
+    def __init__(self, data, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
 
 
 
-arr = [10, 2, 50, 12, 48, 13]
-K1 = 2
-K2 = 6
-print(sumOfElements(arr, K1, K2))
+def postorder(root):
+    st = [root]
+    ans = []
+
+    while st:
+        node = st.pop()
+        if node.left:
+            st.append(node.left)
+        if node.right:
+            st.append(node.right)
+        ans.append(node.data)
+    return ans[::-1]
+
+
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+root.left.right = Node(5)
+root.right.left = Node(6)
+root.right.right = Node(7)
+print(postorder(root))

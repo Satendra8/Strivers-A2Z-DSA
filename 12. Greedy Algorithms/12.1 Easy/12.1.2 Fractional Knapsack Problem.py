@@ -46,3 +46,25 @@ val = [1, 5, 7, 2, 7, 10]
 wt = [4, 9, 6, 3, 7, 3]
 capacity = 24
 print(fractionalknapsack(val, wt, capacity))
+
+
+def fractionalknapsack(val, wt, capacity):
+    n = len(val)
+    profit = {}
+    totalVal = 0
+    for i in range(n):
+        profit[i] = val[i]/wt[i]
+
+    profit = sorted(profit.items(), key=lambda x: x[1], reverse=True)
+
+    for key, value in profit:
+        if capacity <= 0:
+            break
+        
+        if capacity >= wt[key]:
+            totalVal += val[key]
+            capacity -= wt[key]
+        else:
+            totalVal += value * capacity
+            capacity = 0
+    return totalVal

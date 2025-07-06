@@ -78,3 +78,23 @@ curr = 4
 
 
 """
+
+def jumpGame2(nums):
+    """
+    1. Greedy Approach
+    2. Basic idea is from each group how farthest we can jump (BFS approach)
+    3. slide the window l = r+1, r = farthest
+    Time Complexity: O(N)
+    Space Complexity: O(1)
+    """
+    n = len(nums)
+    ans = 0
+    l = r = 0
+    while r < n - 1:
+        farthest = 0
+        for i in range(l, r + 1):
+            farthest = max(farthest, nums[i] + 1)
+        l = r + 1
+        r = farthest
+        ans += 1
+    return ans

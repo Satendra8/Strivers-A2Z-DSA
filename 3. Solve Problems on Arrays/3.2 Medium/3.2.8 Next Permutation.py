@@ -76,8 +76,8 @@ def next_permutation_optimal(arr):
     print(arr)
 
 
-# arr = [2,1,5,4,3,0,0]
-arr = [1,2,3]
+arr = [2,1,5,4,3,0,0]
+# arr = [1,2,3]
 next_permutation_optimal(arr)
 
 
